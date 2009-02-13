@@ -16,6 +16,8 @@ public:
 	bool has(const std::tstring& tag);
 	void add(const std::tstring& tag);
 	void clear();
+	void remove(const std::tstring& tag);
+	std::tstring toString();
 
 private:
 	std::vector<std::tstring> tags_;
