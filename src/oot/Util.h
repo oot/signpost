@@ -2,6 +2,7 @@
 
 #include "oot.h"
 #include <string>
+#include <vector>
 
 namespace oot {	namespace util {
 
@@ -13,7 +14,7 @@ namespace oot {	namespace util {
 	std::string alwaysToMbs(const std::string& str);
 	std::string alwaysToMbs(const std::wstring& str);
 
-	std::tstring trim( std::tstring& str );
+	std::tstring trim(const std::tstring& str );
 	std::tstring combine( std::vector<std::tstring>& strs, const std::tstring& delimiter );
 	std::vector<std::tstring> split( std::tstring& str, const std::tstring& delimiter );
 

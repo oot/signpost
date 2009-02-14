@@ -4,20 +4,9 @@
 #include <vector>
 
 #include "Tags.h"
+#include <boost/date_time.hpp>
 
-namespace item {
-	enum Type{
-		Task,
-		Text,
-		Photo,
-		Picture,
-		Document,
-		Game,
-		Music,
-		Binary,
-		Event
-	};
-}
+typedef boost::posix_time::ptime DateTimeType;
 
 class Item
 {
@@ -25,19 +14,20 @@ public:
 	Item(void);
 	~Item(void);
 
+	enum Type { Todo, Text, Contact, Photo, Picture, Document, Game, Music, Binary, Event };
+
 public:
-	unsigned id;
+	virtual Item::Type getType() = 0;
+	virtual DateTimeType getDateForDisplay() = 0;
+	virtual std::tstring getTitle() = 0;
+	virtual std::tstring getContents() = 0;
 	
-	std::tstring title;
-	std::tstring contents;
-	Tags tags;
-
-	Glib::Date getDateForDisplay() { return createdDate_; }
-
-protected:
-	void setCreatedDate(Glib::Date& date) { createdDate_ = date; }
-
+	Tags& getTags() { return tags_; }
+	void setIdx(unsigned idx) {idx_ = idx; }
+	unsigned getIdx() { return idx_; }
+	
 private:
-	Glib::Date createdDate_;
+	Tags tags_;
+	unsigned idx_;
 
 };
