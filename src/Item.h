@@ -14,7 +14,7 @@ public:
 	Item(void);
 	~Item(void);
 
-	enum Type { Todo, Text, Contact, Photo, Picture, Document, Game, Music, Binary, Event };
+	enum Type { Task, Text, Contact, Photo, Picture, Document, Game, Music, Binary, Event };
 
 public:
 	virtual Item::Type getType() = 0;
