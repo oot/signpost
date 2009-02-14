@@ -1,10 +1,10 @@
 #include "oot.h"
-#include "ISearchCondition.h"
+#include "ISearchFilter.h"
 
-ISearchCondition::ISearchCondition(void)
+ISearchFilter::ISearchFilter(void)
 {
 }
 
-ISearchCondition::~ISearchCondition(void)
+ISearchFilter::~ISearchFilter(void)
 {
 }

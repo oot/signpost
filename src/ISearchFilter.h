@@ -1,10 +1,10 @@
 #pragma once
 
-class ISearchCondition
+class ISearchFilter
 {
 public:
-	ISearchCondition(void);
-	virtual ~ISearchCondition(void);
+	ISearchFilter(void);
+	virtual ~ISearchFilter(void);
 
 	virtual void getStartDate() = 0;
 	virtual void getEndDate() = 0;

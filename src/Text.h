@@ -2,11 +2,11 @@
 
 #include "Item.h"
 
-class TextItem : public Item
+class Text : public Item
 {
 public:
-	TextItem(void);
-	~TextItem(void);
+	Text(void);
+	~Text(void);
 
 	virtual Item::Type getType() { return Item::Text; }
 	virtual DateTimeType getDateForDisplay() { return createdDate_; }

@@ -1,10 +1,10 @@
 #include "oot.h"
-#include "TextItem.h"
+#include "Text.h"
 
-TextItem::TextItem(void)
+Text::Text(void)
 {
 }
 
-TextItem::~TextItem(void)
+Text::~Text(void)
 {
 }
