@@ -1,0 +1,30 @@
+
+
+Item - Todo
+
+sql stmt
+----
+CREATE TABLE "Task" ("idx" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , "title" VARCHAR NOT NULL , "description" TEXT, "status" INTEGER NOT NULL  DEFAULT 0, "start_date" DATETIME, "completed_date" DATETIME NOT NULL  DEFAULT CURRENT_DATE, "progress" INTEGER NOT NULL  DEFAULT 0)
+----
+
+table
++--------------------------------------------------------------------------------------------------+
+|  idx        title      description     status      start_date       completed_date     progress  |
+|--------+------------+--------------+-----------+---------------+-------------------+-------------|
+|  int       varchar        text          int         datetime          datetime           int     |
++--------------------------------------------------------------------------------------------------+
+
+
+Item - Text
+
+sql stmt
+---
+
+---
+
+table
++--------------------------------------------------------------------------------------------------+
+|  idx        title      description     status      start_date       completed_date     progress  |
+|--------+------------+--------------+-----------+---------------+-------------------+-------------|
+|  int       varchar        text          int         datetime          datetime           int     |
++--------------------------------------------------------------------------------------------------+
