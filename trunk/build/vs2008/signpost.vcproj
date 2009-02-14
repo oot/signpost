@@ -51,7 +51,7 @@
 				PrecompiledHeaderThrough="oot.h"
 				WarningLevel="3"
 				DebugInformationFormat="4"
-				DisableSpecificWarnings="4250"
+				DisableSpecificWarnings="4250;4819"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -209,11 +209,35 @@
 			Name="item"
 			>
 			<File
+				RelativePath="..\..\src\Contact.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\Contact.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\ISearchFilter.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\ISearchFilter.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\Item.cpp"
 				>
 			</File>
 			<File
 				RelativePath="..\..\src\Item.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\MarkdownParser.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\MarkdownParser.h"
 				>
 			</File>
 			<File
@@ -225,11 +249,11 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\TaskItem.cpp"
+				RelativePath="..\..\src\Text.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\TaskItem.h"
+				RelativePath="..\..\src\Text.h"
 				>
 			</File>
 		</Filter>
@@ -277,6 +301,86 @@
 			Name="ui"
 			>
 		</Filter>
+		<Filter
+			Name="x"
+			>
+			<File
+				RelativePath="..\..\src\x\BasicInfo.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\x\BasicInfo.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\x\Buttons.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\x\Buttons.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\x\CategoryDatabase.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\x\CategoryDatabase.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\x\CategoryListStore.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\x\CategoryListStore.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\x\CategoryListView.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\x\CategoryListView.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\x\ItemDatabase.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\x\ItemDatabase.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\x\SignpostWindow.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\x\SignpostWindow.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\x\TaskAddWindow.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\x\TaskAddWindow.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\x\TaskItemDatabase.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\x\TaskItemDatabase.h"
+				>
+			</File>
+		</Filter>
+		<File
+			RelativePath="..\..\src\DatabaseTable.txt"
+			>
+		</File>
 		<File
 			RelativePath=".\ReadMe.txt"
 			>
