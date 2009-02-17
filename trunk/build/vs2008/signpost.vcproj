@@ -209,6 +209,14 @@
 			Name="item"
 			>
 			<File
+				RelativePath="..\..\src\Category.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\Category.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\Contact.cpp"
 				>
 			</File>
@@ -374,6 +382,62 @@
 			</File>
 			<File
 				RelativePath="..\..\src\x\TaskItemDatabase.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="cppsqlite"
+			>
+			<File
+				RelativePath="..\..\src\cppsqlite\CppSQLite3.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\cppsqlite\CppSQLite3.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="sqlite3mm"
+			>
+			<File
+				RelativePath="..\..\src\sqlite3mm\Database.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\sqlite3mm\Database.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\sqlite3mm\Exception.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\sqlite3mm\Exception.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\sqlite3mm\Query.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\sqlite3mm\Query.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\sqlite3mm\Reader.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\sqlite3mm\Reader.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\sqlite3mm\Sqlite3mm.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\sqlite3mm\Sqlite3mm.h"
 				>
 			</File>
 		</Filter>

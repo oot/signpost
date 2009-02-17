@@ -13,5 +13,7 @@ public:
 
 	virtual void getCategories() = 0;
 
+	virtual std::tstring getSql() = 0;
+
 
 };
