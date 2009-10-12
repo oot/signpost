@@ -51,7 +51,7 @@
 				PrecompiledHeaderThrough="oot.h"
 				WarningLevel="3"
 				DebugInformationFormat="4"
-				DisableSpecificWarnings="4250;4819"
+				DisableSpecificWarnings="4819;4520"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -241,14 +241,6 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\MarkdownParser.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\MarkdownParser.h"
-				>
-			</File>
-			<File
 				RelativePath="..\..\src\Tags.cpp"
 				>
 			</File>
@@ -386,58 +378,22 @@
 			</File>
 		</Filter>
 		<Filter
-			Name="cppsqlite"
+			Name="markdown"
 			>
 			<File
-				RelativePath="..\..\src\cppsqlite\CppSQLite3.cpp"
+				RelativePath="..\..\src\markdown\markdown-tokens.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\cppsqlite\CppSQLite3.h"
-				>
-			</File>
-		</Filter>
-		<Filter
-			Name="sqlite3mm"
-			>
-			<File
-				RelativePath="..\..\src\sqlite3mm\Database.cpp"
+				RelativePath="..\..\src\markdown\markdown-tokens.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\sqlite3mm\Database.h"
+				RelativePath="..\..\src\markdown\markdown.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\sqlite3mm\Exception.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\sqlite3mm\Exception.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\sqlite3mm\Query.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\sqlite3mm\Query.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\sqlite3mm\Reader.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\sqlite3mm\Reader.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\sqlite3mm\Sqlite3mm.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\sqlite3mm\Sqlite3mm.h"
+				RelativePath="..\..\src\markdown\markdown.h"
 				>
 			</File>
 		</Filter>

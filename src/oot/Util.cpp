@@ -3,25 +3,40 @@
 
 namespace oot {	namespace util {
 
-std::tstring trim( std::tstring& str )
+std::string trim( std::string& str )
 {
-	if(str.size() == std::tstring::npos)
-		return _T("");
+	if(str.size() == std::string::npos)
+		return "";
 
-	std::tstring::size_type beginIdx = str.find_first_not_of(' ', 0);
-	std::tstring::size_type endIdx = str.find_last_not_of(' ', 0);
+	std::string::size_type beginIdx = str.find_first_not_of(' ', 0);
+	std::string::size_type endIdx = str.find_last_not_of(' ', 0);
 
 	if( beginIdx == 0 && endIdx == 0 )
-		return _T("");
+		return "";
 
 	return str.substr(beginIdx, str.size() - endIdx);
 
 }
 
-std::tstring combine( std::vector<std::tstring>& strs, const std::tstring& delimiter )
+std::wstring trim( std::wstring& str )
 {
-	std::tstring ret(_T(""));
-	std::vector<std::tstring>::iterator iter = strs.begin();
+	if(str.size() == std::wstring::npos)
+		return L"";
+
+	std::wstring::size_type beginIdx = str.find_first_not_of(' ', 0);
+	std::wstring::size_type endIdx = str.find_last_not_of(' ', 0);
+
+	if( beginIdx == 0 && endIdx == 0 )
+		return L"";
+
+	return str.substr(beginIdx, str.size() - endIdx);
+
+}
+
+std::string combine( std::vector<std::string>& strs, const std::string& delimiter )
+{
+	std::string ret("");
+	std::vector<std::string>::iterator iter = strs.begin();
 
 	if( iter == strs.end() ) return ret;
 
@@ -40,15 +55,55 @@ std::tstring combine( std::vector<std::tstring>& strs, const std::tstring& delim
 	return ret;
 }
 
-std::vector<std::tstring> split( std::tstring& str, const std::tstring& delimiter )
+std::wstring combine( std::vector<std::wstring>& strs, const std::wstring& delimiter )
 {
-	using std::tstring;
-	std::vector<tstring> tokens;
+	std::wstring ret(L"");
+	std::vector<std::wstring>::iterator iter = strs.begin();
 
-	tstring::size_type lastPos = str.find_first_not_of(delimiter, 0);
-	tstring::size_type pos     = str.find_first_of(delimiter, lastPos);
+	if( iter == strs.end() ) return ret;
 
-	while (tstring::npos != pos || tstring::npos != lastPos)
+	while( true )
+	{
+		ret.append( *(iter) );
+
+		iter++;
+
+		if( iter == strs.end() )
+			break;
+
+		ret.append(delimiter);
+	}
+
+	return ret;
+}
+
+std::vector<std::string> split( std::string& str, const std::string& delimiter )
+{
+	using std::string;
+	std::vector<string> tokens;
+
+	string::size_type lastPos = str.find_first_not_of(delimiter, 0);
+	string::size_type pos     = str.find_first_of(delimiter, lastPos);
+
+	while (string::npos != pos || string::npos != lastPos)
+	{
+		tokens.push_back(str.substr(lastPos, pos - lastPos));
+		lastPos = str.find_first_not_of(delimiter, pos);
+		pos = str.find_first_of(delimiter, lastPos);
+	}
+
+	return tokens;
+}
+
+std::vector<std::wstring> split( std::wstring& str, const std::wstring& delimiter )
+{
+	using std::wstring;
+	std::vector<wstring> tokens;
+
+	wstring::size_type lastPos = str.find_first_not_of(delimiter, 0);
+	wstring::size_type pos     = str.find_first_of(delimiter, lastPos);
+
+	while (wstring::npos != pos || wstring::npos != lastPos)
 	{
 		tokens.push_back(str.substr(lastPos, pos - lastPos));
 		lastPos = str.find_first_not_of(delimiter, pos);

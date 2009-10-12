@@ -70,7 +70,7 @@ helpMenuItem_("_Help")
 	menubar_.add(viewMenuItem_);
 	menubar_.add(helpMenuItem_);
 
-	
+
 	toolbar_.append(newToolButton_);
 
 	fileMenu_.append(openMenuItem_);
@@ -80,7 +80,7 @@ helpMenuItem_("_Help")
 
 	fileMenuItem_.set_submenu(fileMenu_);
 	helpMenuItem_.set_submenu(helpMenu_);
-	
+
 
 	add(vbox_);
 

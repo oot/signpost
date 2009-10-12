@@ -16,7 +16,7 @@
 	2. Altered source versions must be plainly marked as such, and must not be
 		misrepresented as being the original software.
 	3. This notice may not be removed or altered from any source distribution.
-	
+
 	CVS Info :
 		$Author: phrostbyte $
 		$Date: 2005/06/16 20:46:40 $
@@ -28,6 +28,7 @@
 
 #include <string>
 #include <boost/utility.hpp>
+#include <stdexcept>
 
 namespace sqlite3x {
 	class sqlite3_connection : boost::noncopyable {
@@ -161,8 +162,8 @@ namespace sqlite3x {
 		int getint(int index);
 		long long getint64(int index);
 		double getdouble(int index);
-		std::string getstring(int index);
-		std::wstring getstring16(int index);
+		std::string gewstring(int index);
+		std::wstring gewstring16(int index);
 		std::string getblob(int index);
 
 		std::string getcolname(int index);

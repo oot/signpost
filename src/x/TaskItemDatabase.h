@@ -1,6 +1,6 @@
 #pragma once
 
-#include "sqlite3x.h"
+#include "sqlite3x/sqlite3x.h"
 #include "ISearchFilter.h"
 #include <boost/signals.hpp>
 

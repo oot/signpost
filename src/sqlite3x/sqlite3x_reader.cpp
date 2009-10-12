@@ -96,13 +96,13 @@ double sqlite3_reader::getdouble(int index) {
 	return sqlite3_column_double(this->cmd->stmt, index);
 }
 
-std::string sqlite3_reader::getstring(int index) {
+std::string sqlite3_reader::gewstring(int index) {
 	if(!this->cmd) throw database_error("reader is closed");
 	if((index)>(this->cmd->argc-1)) throw std::out_of_range("index out of range");
 	return std::string((const char*)sqlite3_column_text(this->cmd->stmt, index), sqlite3_column_bytes(this->cmd->stmt, index));
 }
 
-std::wstring sqlite3_reader::getstring16(int index) {
+std::wstring sqlite3_reader::gewstring16(int index) {
 	if(!this->cmd) throw database_error("reader is closed");
 	if((index)>(this->cmd->argc-1)) throw std::out_of_range("index out of range");
 	return std::wstring((const wchar_t*)sqlite3_column_text16(this->cmd->stmt, index), sqlite3_column_bytes16(this->cmd->stmt, index)/2);

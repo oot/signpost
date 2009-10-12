@@ -135,7 +135,7 @@ void BasicInfo::updateCategoryFromDb()
 
 	while(reader.read()) {
 		idx = reader.getint(0);
-		name = reader.getstring(1).c_str();
+		name = reader.gewstring(1).c_str();
 		categoryList[idx] = name;
 	}
 }

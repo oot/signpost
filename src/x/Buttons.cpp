@@ -35,7 +35,7 @@ Buttons::~Buttons(void)
 void Buttons::on_normal_btn_clicked()
 {
 	Gtk::MessageDialog msgDlg("normal button clicked", false, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_OK_CANCEL, true);
-	
+
 	msgDlg.run();
 }
 

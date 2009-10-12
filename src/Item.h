@@ -19,8 +19,8 @@ public:
 public:
 	virtual Item::Type getType() = 0;
 	virtual DateTimeType getDateForDisplay() = 0;
-	virtual std::tstring getTitle() = 0;
-	virtual std::tstring getContents() = 0;
+	virtual std::wstring getTitle() = 0;
+	virtual std::wstring getContents() = 0;
 	
 	Tags& getTags() { return tags_; }
 	void setIdx(unsigned idx) {idx_ = idx; }
