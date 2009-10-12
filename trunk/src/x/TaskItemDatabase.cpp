@@ -67,9 +67,9 @@ void TaskItemDatabase::searchAndCallback( ISearchCondition& condition, std::tr1:
 	while( reader.read() )
 	{
 		item.setIdx( reader.getint(0) );
-		Glib::ustring titleData( reader.getstring(1).c_str());
+		Glib::ustring titleData( reader.gewstring(1).c_str());
 		item.setTitle( titleData );
-		Glib::ustring contentData( reader.getstring(2).c_str());
+		Glib::ustring contentData( reader.gewstring(2).c_str());
 		item.setContent( contentData );
 		item.setCompleted( (reader.getint(3) > 0) );
 

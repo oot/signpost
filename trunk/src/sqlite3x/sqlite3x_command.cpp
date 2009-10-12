@@ -138,13 +138,13 @@ double sqlite3_command::executedouble() {
 std::string sqlite3_command::executestring() {
 	sqlite3_reader reader=this->executereader();
 	if(!reader.read()) throw database_error("nothing to read");
-	return reader.getstring(0);
+	return reader.gewstring(0);
 }
 
 std::wstring sqlite3_command::executestring16() {
 	sqlite3_reader reader=this->executereader();
 	if(!reader.read()) throw database_error("nothing to read");
-	return reader.getstring16(0);
+	return reader.gewstring16(0);
 }
 
 std::string sqlite3_command::executeblob() {

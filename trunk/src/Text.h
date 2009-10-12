@@ -10,16 +10,16 @@ public:
 
 	virtual Item::Type getType() { return Item::Text; }
 	virtual DateTimeType getDateForDisplay() { return createdDate_; }
-	virtual std::tstring getTitle() { return title_; }
-	virtual std::tstring getContents() { return contents_; }
+	virtual std::wstring getTitle() { return title_; }
+	virtual std::wstring getContents() { return contents_; }
 
-	std::tstring getMarkdwonContents() { return contents_; }
-	void setTitle(const std::tstring& title) { title_ = title; }
-	void setContents(const std::tstring& contents) { contents_ = contents; }
+	std::wstring getMarkdwonContents() { return contents_; }
+	void setTitle(const std::wstring& title) { title_ = title; }
+	void setContents(const std::wstring& contents) { contents_ = contents; }
 
 private:
-	std::tstring title_;
-	std::tstring contents_;
+	std::wstring title_;
+	std::wstring contents_;
 	DateTimeType createdDate_;
 	bool isCompleted_;
 };

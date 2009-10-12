@@ -20,10 +20,10 @@ class Address
 public:
 	enum Type { Home, Work, Other };
 
-	std::tstring country;
-	std::tstring province;
-	std::tstring city;
-	std::tstring address;
+	std::wstring country;
+	std::wstring province;
+	std::wstring city;
+	std::wstring address;
 };
 
 class Email
@@ -32,10 +32,10 @@ public:
 	enum Type { Personal, Home, Work, Other};
 };
 
-typedef std::pair<Phone::Type, std::tstring> PhonePairType;
-typedef std::pair<Address::Type, std::tstring> AddressPairType;
-typedef std::pair<Messenger::Type, std::tstring> MessengerPairType;
-typedef std::pair<Email::Type, std::tstring> EmailPairType;
+typedef std::pair<Phone::Type, std::wstring> PhonePairType;
+typedef std::pair<Address::Type, std::wstring> AddressPairType;
+typedef std::pair<Messenger::Type, std::wstring> MessengerPairType;
+typedef std::pair<Email::Type, std::wstring> EmailPairType;
 
 typedef std::vector<PhonePairType> PhoneListType;
 typedef std::vector<AddressPairType> AddressListType;
@@ -51,22 +51,22 @@ public:
 
 	virtual Item::Type getType() { return Item::Contact; }
 	virtual DateTimeType getDateForDisplay() { return createdDate_; }
-	virtual std::tstring getTitle() { return familyName_ + personalName_ + title_; }
-	virtual std::tstring getContents() { return note_; }
+	virtual std::wstring getTitle() { return familyName_ + personalName_ + title_; }
+	virtual std::wstring getContents() { return note_; }
 
 private:
-	std::tstring familyName_;
-	std::tstring personalName_;
-	std::tstring company_;
-	std::tstring title_;
-	std::tstring department_;
+	std::wstring familyName_;
+	std::wstring personalName_;
+	std::wstring company_;
+	std::wstring title_;
+	std::wstring department_;
 
 	AddressListType addresses_;
 	PhoneListType phones_;
 	MessengerListType messenger_;
 	EmailListType emails_;
 	
-	std::tstring note_;
+	std::wstring note_;
 
 	DateTimeType createdDate_;
 };

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "oot.h"
+
 class ISearchFilter
 {
 public:
@@ -13,7 +15,7 @@ public:
 
 	virtual void getCategories() = 0;
 
-	virtual std::tstring getSql() = 0;
+	virtual std::wstring getSql() = 0;
 
 
 };
