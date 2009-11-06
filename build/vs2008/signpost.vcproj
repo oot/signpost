@@ -300,6 +300,38 @@
 		<Filter
 			Name="ui"
 			>
+			<File
+				RelativePath="..\..\src\ui\LStoreSubCategory.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\ui\LStoreSubCategory.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\ui\WindowCategory.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\ui\WindowCategory.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\ui\WindowSignpost.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\ui\WindowSignpost.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\ui\WindowSubCategory.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\ui\WindowSubCategory.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="x"
