@@ -8,7 +8,7 @@ public:
 	Task(void);
 	~Task(void);
 
-	enum StatusType { InProgress, NotStarted, Canceled, Completed, Holding, Waiting, Pledge };
+	enum StateType { InProgress, NotStarted, Canceled, Completed, Holding, Waiting, Pledge };
 
 	virtual Item::Type getType() { return Item::Task; }
 	virtual DateTimeType getDateForDisplay() { return completedDate_; }
@@ -17,8 +17,8 @@ public:
 
 	void setTitle(const std::tstring& title) { title_ = title; }
 	void setContents(const std::tstring& contents) { description_ = contents; }
-	void setStatus(StatusType status) { status_ = status; }
-	StatusType getStatus() { return status_; }
+	void setState(StateType status) { status_ = status; }
+	StateType getState() { return status_; }
 	int getProgress() { return progress_; }
 	void setProgress(int progress) { progress_ = progress; }
 
@@ -27,7 +27,7 @@ private:
 	std::tstring description_;
 
 	int progress_;
-	StatusType status_;
+	StateType status_;
 
 	DateTimeType completedDate_;
 	DateTimeType startDate_;
