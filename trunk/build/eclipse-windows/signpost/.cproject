@@ -72,7 +72,7 @@
 </toolChain>
 </folderInfo>
 <sourceEntries>
-<entry excluding="oot.cpp|DatabaseTable.txt|Text.h|Text.cpp|Task.h|Task.cpp|Tags.h|Tags.cpp|MarkdownParser.h|MarkdownParser.cpp|Item.h|Item.cpp|ISearchFilter.h|ISearchFilter.cpp|Contact.h|Contact.cpp|x/paperbox.sqlite3|x/TaskItemDatabase.h|x/TaskItemDatabase.cpp|x/TaskAddWindow.h|x/TaskAddWindow.cpp|x/targetver.h|x/SignpostWindow.h|x/SignpostWindow.cpp|x/ItemDatabase.h|x/ItemDatabase.cpp|x/CategoryListView.h|x/CategoryListView.cpp|x/CategoryListStore.h|x/CategoryListStore.cpp|x/CategoryDatabase.h|x/CategoryDatabase.cpp|x/Buttons.h|x/Buttons.cpp|x/BasicInfo.h|x/BasicInfo.cpp|oot.hxx|oot.hpp" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
+<entry excluding="ui/PreviewWindow.h|ui/PreviewWindow.cpp|ui/ListWindow.h|ui/ListWindow.cpp|oot.cpp|DatabaseTable.txt|Text.h|Text.cpp|Task.h|Task.cpp|Tags.h|Tags.cpp|MarkdownParser.h|MarkdownParser.cpp|Item.h|Item.cpp|ISearchFilter.h|ISearchFilter.cpp|Contact.h|Contact.cpp|x/paperbox.sqlite3|x/TaskItemDatabase.h|x/TaskItemDatabase.cpp|x/TaskAddWindow.h|x/TaskAddWindow.cpp|x/targetver.h|x/SignpostWindow.h|x/SignpostWindow.cpp|x/ItemDatabase.h|x/ItemDatabase.cpp|x/CategoryListView.h|x/CategoryListView.cpp|x/CategoryListStore.h|x/CategoryListStore.cpp|x/CategoryDatabase.h|x/CategoryDatabase.cpp|x/Buttons.h|x/Buttons.cpp|x/BasicInfo.h|x/BasicInfo.cpp|oot.hxx|oot.hpp" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
 </sourceEntries>
 </configuration>
 </storageModule>
@@ -369,7 +369,7 @@
 </toolChain>
 </folderInfo>
 <sourceEntries>
-<entry excluding="src/oot.cpp|src/DatabaseTable.txt|src/Text.h|src/Text.cpp|src/Task.h|src/Task.cpp|src/Tags.h|src/Tags.cpp|src/MarkdownParser.h|src/MarkdownParser.cpp|src/Item.h|src/Item.cpp|src/ISearchFilter.h|src/ISearchFilter.cpp|src/Contact.h|src/Contact.cpp|src/x/paperbox.sqlite3|src/x/TaskItemDatabase.h|src/x/TaskItemDatabase.cpp|src/x/TaskAddWindow.h|src/x/TaskAddWindow.cpp|src/x/targetver.h|src/x/SignpostWindow.h|src/x/SignpostWindow.cpp|src/x/ItemDatabase.h|src/x/ItemDatabase.cpp|src/x/CategoryListView.h|src/x/CategoryListView.cpp|src/x/CategoryListStore.h|src/x/CategoryListStore.cpp|src/x/CategoryDatabase.h|src/x/CategoryDatabase.cpp|src/x/Buttons.h|src/x/Buttons.cpp|src/x/BasicInfo.h|src/x/BasicInfo.cpp|src/oot.hxx|src/oot.hpp" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+<entry excluding="src/ui/PreviewWindow.h|src/ui/PreviewWindow.cpp|src/ui/ListWindow.h|src/ui/ListWindow.cpp|src/oot.cpp|src/DatabaseTable.txt|src/Text.h|src/Text.cpp|src/Task.h|src/Task.cpp|src/Tags.h|src/Tags.cpp|src/MarkdownParser.h|src/MarkdownParser.cpp|src/Item.h|src/Item.cpp|src/ISearchFilter.h|src/ISearchFilter.cpp|src/Contact.h|src/Contact.cpp|src/x/paperbox.sqlite3|src/x/TaskItemDatabase.h|src/x/TaskItemDatabase.cpp|src/x/TaskAddWindow.h|src/x/TaskAddWindow.cpp|src/x/targetver.h|src/x/SignpostWindow.h|src/x/SignpostWindow.cpp|src/x/ItemDatabase.h|src/x/ItemDatabase.cpp|src/x/CategoryListView.h|src/x/CategoryListView.cpp|src/x/CategoryListStore.h|src/x/CategoryListStore.cpp|src/x/CategoryDatabase.h|src/x/CategoryDatabase.cpp|src/x/Buttons.h|src/x/Buttons.cpp|src/x/BasicInfo.h|src/x/BasicInfo.cpp|src/oot.hxx|src/oot.hpp" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 </sourceEntries>
 </configuration>
 </storageModule>
