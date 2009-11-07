@@ -2,12 +2,10 @@
 
 #include <gtkmm.h>
 
-
-
-class CategoryListView : public Gtk::ListViewText
+class LViewSubCategory : public Gtk::ListViewText
 {
 public:
-	CategoryListView(void);
-	~CategoryListView(void);
+	LViewSubCategory(void);
+	~LViewSubCategory(void);
 
 };

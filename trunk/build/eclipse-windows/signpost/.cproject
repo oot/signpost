@@ -27,29 +27,27 @@
 <option id="gnu.cpp.compiler.mingw.exe.debug.option.optimization.level.1738013010" name="Optimization Level" superClass="gnu.cpp.compiler.mingw.exe.debug.option.optimization.level" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
 <option id="gnu.cpp.compiler.mingw.exe.debug.option.debugging.level.323332412" name="Debug Level" superClass="gnu.cpp.compiler.mingw.exe.debug.option.debugging.level" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
 <option id="gnu.cpp.compiler.option.include.paths.1897602854" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
-<listOptionValue builtIn="false" value="&quot;C:\GTK\include\glibmm-2.4&quot;"/>
-<listOptionValue builtIn="false" value="&quot;C:\GTK\include\gtk-2.0&quot;"/>
-<listOptionValue builtIn="false" value="&quot;C:\GTK\include\atkmm-1.6&quot;"/>
-<listOptionValue builtIn="false" value="&quot;C:\GTK\include\cairomm-1.0&quot;"/>
-<listOptionValue builtIn="false" value="&quot;C:\GTK\include\gdkmm-2.4&quot;"/>
-<listOptionValue builtIn="false" value="&quot;C:\GTK\include\gtkmm-2.4&quot;"/>
-<listOptionValue builtIn="false" value="&quot;C:\GTK\include\pangomm-1.4&quot;"/>
-<listOptionValue builtIn="false" value="&quot;C:\GTK\include\libxml++-2.6&quot;"/>
-<listOptionValue builtIn="false" value="&quot;C:\GTK\include\sigc++-2.0&quot;"/>
-<listOptionValue builtIn="false" value="&quot;C:\GTK\include\cairo&quot;"/>
-<listOptionValue builtIn="false" value="&quot;C:\GTK\include\glib-2.0&quot;"/>
-<listOptionValue builtIn="false" value="&quot;C:\GTK\include\atk-1.0&quot;"/>
-<listOptionValue builtIn="false" value="&quot;C:\GTK\include\pango-1.0&quot;"/>
-<listOptionValue builtIn="false" value="&quot;C:\GTK\lib\glib-2.0\include&quot;"/>
-<listOptionValue builtIn="false" value="&quot;C:\GTK\lib\gdkmm-2.4\include&quot;"/>
-<listOptionValue builtIn="false" value="&quot;C:\GTK\lib\glibmm-2.4\include&quot;"/>
-<listOptionValue builtIn="false" value="&quot;C:\GTK\lib\gtk-2.0\include&quot;"/>
-<listOptionValue builtIn="false" value="&quot;C:\GTK\lib\gtkmm-2.4\include&quot;"/>
-<listOptionValue builtIn="false" value="&quot;C:\GTK\lib\libxml++-2.6\include&quot;"/>
-<listOptionValue builtIn="false" value="&quot;C:\GTK\lib\sigc++-2.0\include&quot;"/>
-<listOptionValue builtIn="false" value="&quot;C:\GTK\include\giomm-2.4&quot;"/>
-<listOptionValue builtIn="false" value="&quot;D:\sitcommondll\devlib\boost_1_36_0&quot;"/>
-<listOptionValue builtIn="false" value="&quot;D:\sitcommondll\devlib\sqlite3&quot;"/>
+<listOptionValue builtIn="false" value="&quot;${GTKMM_BASEPAHT}\include\glibmm-2.4&quot;"/>
+<listOptionValue builtIn="false" value="&quot;${GTKMM_BASEPAHT}\include\gtk-2.0&quot;"/>
+<listOptionValue builtIn="false" value="&quot;${GTKMM_BASEPAHT}\include\atkmm-1.6&quot;"/>
+<listOptionValue builtIn="false" value="&quot;${GTKMM_BASEPAHT}\include\cairomm-1.0&quot;"/>
+<listOptionValue builtIn="false" value="&quot;${GTKMM_BASEPAHT}\include\gdkmm-2.4&quot;"/>
+<listOptionValue builtIn="false" value="&quot;${GTKMM_BASEPAHT}\include\gtkmm-2.4&quot;"/>
+<listOptionValue builtIn="false" value="&quot;${GTKMM_BASEPAHT}\include\pangomm-1.4&quot;"/>
+<listOptionValue builtIn="false" value="&quot;${GTKMM_BASEPAHT}\include\libxml++-2.6&quot;"/>
+<listOptionValue builtIn="false" value="&quot;${GTKMM_BASEPAHT}\include\sigc++-2.0&quot;"/>
+<listOptionValue builtIn="false" value="&quot;${GTKMM_BASEPAHT}\include\cairo&quot;"/>
+<listOptionValue builtIn="false" value="&quot;${GTKMM_BASEPAHT}\include\glib-2.0&quot;"/>
+<listOptionValue builtIn="false" value="&quot;${GTKMM_BASEPAHT}\include\atk-1.0&quot;"/>
+<listOptionValue builtIn="false" value="&quot;${GTKMM_BASEPAHT}\include\pango-1.0&quot;"/>
+<listOptionValue builtIn="false" value="&quot;${GTKMM_BASEPAHT}\lib\glib-2.0\include&quot;"/>
+<listOptionValue builtIn="false" value="&quot;${GTKMM_BASEPAHT}\lib\gdkmm-2.4\include&quot;"/>
+<listOptionValue builtIn="false" value="&quot;${GTKMM_BASEPAHT}\lib\glibmm-2.4\include&quot;"/>
+<listOptionValue builtIn="false" value="&quot;${GTKMM_BASEPAHT}\lib\gtk-2.0\include&quot;"/>
+<listOptionValue builtIn="false" value="&quot;${GTKMM_BASEPAHT}\lib\gtkmm-2.4\include&quot;"/>
+<listOptionValue builtIn="false" value="&quot;${GTKMM_BASEPAHT}\lib\libxml++-2.6\include&quot;"/>
+<listOptionValue builtIn="false" value="&quot;${GTKMM_BASEPAHT}\lib\sigc++-2.0\include&quot;"/>
+<listOptionValue builtIn="false" value="&quot;${GTKMM_BASEPAHT}\include\giomm-2.4&quot;"/>
 <listOptionValue builtIn="false" value="&quot;${workspace_loc:/signpost/src}&quot;"/>
 </option>
 <option id="gnu.cpp.compiler.option.preprocessor.def.1963759596" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" valueType="definedSymbols">
