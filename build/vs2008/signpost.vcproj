@@ -51,7 +51,7 @@
 				PrecompiledHeaderThrough="oot.h"
 				WarningLevel="3"
 				DebugInformationFormat="4"
-				DisableSpecificWarnings="4819;4520"
+				DisableSpecificWarnings="4250;4819"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -301,11 +301,35 @@
 			Name="ui"
 			>
 			<File
+				RelativePath="..\..\src\ui\ListWindow.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\ui\ListWindow.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\ui\LStoreSubCategory.cpp"
 				>
 			</File>
 			<File
 				RelativePath="..\..\src\ui\LStoreSubCategory.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\ui\LViewSubCategory.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\ui\LViewSubCategory.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\ui\PreviewWindow.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\ui\PreviewWindow.h"
 				>
 			</File>
 			<File
@@ -426,6 +450,18 @@
 			</File>
 			<File
 				RelativePath="..\..\src\markdown\markdown.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="cppsqlite3"
+			>
+			<File
+				RelativePath="..\..\src\cppsqlite3\CppSQLite3.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\cppsqlite3\CppSQLite3.h"
 				>
 			</File>
 		</Filter>

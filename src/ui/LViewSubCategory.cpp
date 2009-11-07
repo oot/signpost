@@ -1,13 +1,13 @@
 #include "oot.h"
-#include "CategoryListView.h"
+#include "LViewSubCategory.h"
 
-CategoryListView::CategoryListView(void)
+LViewSubCategory::LViewSubCategory(void)
 : Gtk::ListViewText(0)
 {
 	//set_column_title(0, "Select");
 	//set_column_title(1, "Category");
 }
 
-CategoryListView::~CategoryListView(void)
+LViewSubCategory::~LViewSubCategory(void)
 {
 }
