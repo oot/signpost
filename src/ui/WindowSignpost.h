@@ -4,6 +4,10 @@
 
 #include "WindowCategory.h"
 #include "WindowSubCategory.h"
+#include "WindowList.h"
+#include "WindowPreview.h"
+
+#include "TextReader.h"
 
 class WindowSignpost : public Gtk::Window
 {
@@ -11,6 +15,14 @@ public:
 	WindowSignpost(void);
 	~WindowSignpost(void);
 
+
+
+private:
+	void initializeItem();
+	void onCategoryChange(int itemType);
+	void onSubCategoryChange(int itemType, const std::string& category);
+	void changeSubCategory();
+	void changeItemList();
 
 private:
 	Gtk::VBox vbox_;
@@ -24,13 +36,12 @@ private:
 
 	Gtk::VPaned vpanedCategory_;
 
-	WindowCategory swinCategory_;
-	WindowSubCategory swinSubCategory_;
-	Gtk::ScrolledWindow swinItemList_;
-	Gtk::ScrolledWindow swinItemView_;
+	WindowCategory		swinCategory_;
+	WindowSubCategory	swinSubCategory_;
+	WindowList			swinItemList_;
+	WindowPreview		swinItemView_;
 
-	Gtk::ListViewText lviewTextItem;
-	Gtk::TextView	  tviewItem;
+	TextReader			textReader_;
 
 	Gtk::Menu menuFile_;
 	Gtk::Menu menuView_;
@@ -53,6 +64,7 @@ private:
 
 
 	//////////////////////////////////////////////////////////////////////////
-	//BasicInfo basic;
+
+	std::vector<bool> selectedCategory_;
 
 };

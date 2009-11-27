@@ -8,18 +8,26 @@ public:
 	Text(void);
 	~Text(void);
 
-	virtual Item::Type getType() { return Item::Text; }
-	virtual DateTimeType getDateForDisplay() { return createdDate_; }
-	virtual std::wstring getTitle() { return title_; }
-	virtual std::wstring getContents() { return contents_; }
+	virtual Item::Type getType() const { return Item::Text; }
+	virtual DateTimeType getDisplayDate() const { return createdDate_; }
+	virtual std::string getTitle() const { return title_; }
+	virtual std::string getContents() const { return contents_; }
+	virtual DateTimeType getDateTime(View view) const;
+	virtual std::string getPath() const {return path_; }
 
-	std::wstring getMarkdwonContents() { return contents_; }
-	void setTitle(const std::wstring& title) { title_ = title; }
-	void setContents(const std::wstring& contents) { contents_ = contents; }
+	void setCategory(const std::string& category) {category_ = category; }
+	std::string getCategory() const {return category_; }
+
+	std::string getMarkdwonContents() { return contents_; }
+	void setTitle(const std::string& title) { title_ = title; }
+	void setContents(const std::string& contents) { contents_ = contents; }
 
 private:
-	std::wstring title_;
-	std::wstring contents_;
+	std::string title_;
+	std::string contents_;
 	DateTimeType createdDate_;
+	DateTimeType modifiedDate_;
 	bool isCompleted_;
+	std::string category_;
+	std::string path_;
 };

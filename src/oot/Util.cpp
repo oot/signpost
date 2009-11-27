@@ -1,6 +1,10 @@
 #include "oot.h"
 #include "Util.h"
 
+#include <windows.h> // GetModuleFileName
+#include <direct.h> // _mkdir
+#include <sys/timeb.h> // _timeb
+
 namespace oot {	namespace util {
 
 std::string trim( std::string& str )
@@ -77,7 +81,7 @@ std::wstring combine( std::vector<std::wstring>& strs, const std::wstring& delim
 	return ret;
 }
 
-std::vector<std::string> split( std::string& str, const std::string& delimiter )
+std::vector<std::string> split( const std::string& str, const std::string& delimiter )
 {
 	using std::string;
 	std::vector<string> tokens;
@@ -95,7 +99,7 @@ std::vector<std::string> split( std::string& str, const std::string& delimiter )
 	return tokens;
 }
 
-std::vector<std::wstring> split( std::wstring& str, const std::wstring& delimiter )
+std::vector<std::wstring> split( const std::wstring& str, const std::wstring& delimiter )
 {
 	using std::wstring;
 	std::vector<wstring> tokens;
@@ -111,6 +115,69 @@ std::vector<std::wstring> split( std::wstring& str, const std::wstring& delimite
 	}
 
 	return tokens;
+}
+
+std::string getProgramPath( bool isDirOnly /*= true*/ )
+{
+	char szBuffer[MAX_PATH];
+	std::string strRet;
+	::GetModuleFileNameA(NULL, szBuffer, MAX_PATH);
+	strRet = szBuffer;
+
+	if(!isDirOnly)
+		return strRet;
+
+	int nIndex = strRet.find_last_of('\\');
+	return strRet.substr(0, nIndex);
+}
+
+bool makeDir( const std::string& path )
+{
+	std::vector<std::string> dirs = split(path, "\\");
+
+	if(dirs.empty()) return false;
+
+	std::string dir;
+
+	unsigned i;
+	for(i = 0; i < (dirs.size() - 1); i++)
+	{
+		if(i == 0) dir = dirs[i];
+		else dir.append("\\" + dirs[i]);
+
+		int ret = _mkdir(dir.c_str());
+	}
+
+	if(i == 0) dir = dirs[i];
+	else dir.append("\\" + dirs[i]);
+
+	int ret = _mkdir(dir.c_str());
+
+	if(ret) return false;
+	else return true;
+}
+
+std::string getCurrentDateTime()
+{
+	_timeb tb;
+	_ftime_s(&tb);
+
+	struct tm t;
+	localtime_s(&t, &tb.time);
+
+	char datetime[100] = { '\0' };
+	sprintf_s(datetime, 100, "%04d-%02d-%02dT%02d:%02d:%02d.%03d", 
+			t.tm_year + 1900,
+			t.tm_mon + 1,
+			t.tm_mday,
+			t.tm_hour,
+			t.tm_min,
+			t.tm_sec,
+			tb.millitm );
+
+	std::string datetimeStr(datetime);
+
+	return datetimeStr;
 }
 
 }} /* namespace oot::util */

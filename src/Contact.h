@@ -7,12 +7,18 @@ class Messenger
 {
 public:
 	enum Type { MSN, NateOn, ICQ, GoogleTalk, AIM, Yahoo, Other };
+
+	Type type;
+	std::string id;
 };
 
 class Phone
 {
 public:
 	enum Type { HomePhone, HomeFax, WorkPhone, WorkFax, Mobile, Fax, Other};
+
+	Type type;
+	std::string number;
 };
 
 class Address
@@ -20,27 +26,36 @@ class Address
 public:
 	enum Type { Home, Work, Other };
 
-	std::wstring country;
-	std::wstring province;
-	std::wstring city;
-	std::wstring address;
+	Type type;
+	std::string country;
+	std::string province;
+	std::string city;
+	std::string address;
+	std::string post;
+};
+
+class SpecialDay
+{
+	enum Type {Birthday, };
+
+	Type type;
+	DateTimeType datetime;
 };
 
 class Email
 {
 public:
 	enum Type { Personal, Home, Work, Other};
+
+	Type type;
+	std::string address;
 };
 
-typedef std::pair<Phone::Type, std::wstring> PhonePairType;
-typedef std::pair<Address::Type, std::wstring> AddressPairType;
-typedef std::pair<Messenger::Type, std::wstring> MessengerPairType;
-typedef std::pair<Email::Type, std::wstring> EmailPairType;
-
-typedef std::vector<PhonePairType> PhoneListType;
-typedef std::vector<AddressPairType> AddressListType;
-typedef std::vector<MessengerPairType> MessengerListType;
-typedef std::vector<EmailPairType> EmailListType;
+typedef std::vector<Phone>		PhoneListType;
+typedef std::vector<Address>	AddressListType;
+typedef std::vector<Messenger>	MessengerListType;
+typedef std::vector<Email>		EmailListType;
+typedef std::vector<SpecialDay> SpecialDayListType;
 
 class Contact : public Item
 {
@@ -50,23 +65,24 @@ public:
 	
 
 	virtual Item::Type getType() { return Item::Contact; }
-	virtual DateTimeType getDateForDisplay() { return createdDate_; }
-	virtual std::wstring getTitle() { return familyName_ + personalName_ + title_; }
-	virtual std::wstring getContents() { return note_; }
+	virtual DateTimeType getDisplayDate() { return createdDate_; }
+	virtual std::string getTitle() { return familyName_ + personalName_ + title_; }
+	virtual std::string getContents() { return note_; }
 
 private:
-	std::wstring familyName_;
-	std::wstring personalName_;
-	std::wstring company_;
-	std::wstring title_;
-	std::wstring department_;
+	std::string familyName_;
+	std::string personalName_;
+	std::string company_;
+	std::string title_;
+	std::string department_;
 
 	AddressListType addresses_;
 	PhoneListType phones_;
 	MessengerListType messenger_;
 	EmailListType emails_;
+	SpecialDayListType specialdays_;
 	
-	std::wstring note_;
+	std::string note_;
 
 	DateTimeType createdDate_;
 };

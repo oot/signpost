@@ -1,0 +1,290 @@
+#include "oot.h"
+#include "TextReader.h"
+
+TextReader::TextReader(void)
+: isOpened_(false)
+{
+}
+
+TextReader::~TextReader(void)
+{
+}
+
+bool TextReader::open( const std::string& databasePath )
+{
+	if(isOpened()) return true;
+
+	try
+	{
+		db_.open(databasePath.c_str());
+		isOpened_ = true;
+	}
+	catch (...)
+	{
+		isOpened_ = false;
+	}
+
+	return isOpened_;
+}
+
+bool TextReader::verifyTable(const std::string& tableName)
+{
+	bool ret = true;
+
+	try
+	{
+		ret = db_.tableExists(tableName.c_str());
+	}
+	catch (std::exception ex)
+	{
+		ret = false;
+	}
+
+	return ret;
+}
+
+bool TextReader::createTextTable()
+{
+	bool ret = true;
+
+	std::string query("CREATE TABLE ");
+
+	query.append("Text (" );
+
+	query.append("idx INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL, ");
+	query.append("category VARCHAR NOT NULL, ");
+	query.append("title VARCHAR NOT NULL, ");
+	query.append("content TEXT, ");
+	query.append("path VARCHAR NOT NULL, ");
+	query.append("create_date DATETIME NOT NULL  DEFAULT CURRENT_DATE, ");
+	query.append("modify_date DATETIME NOT NULL  DEFAULT CURRENT_DATE");
+	query.append(");");
+
+	try
+	{
+		db_.execQuery(query.c_str());
+	}
+	catch (std::exception ex)
+	{
+		ret = false;
+	}
+
+	return ret;
+}
+
+bool TextReader::add( Text& text )
+{
+	std::stringstream query;
+	query	<< "INSERT INTO Text "
+			<< "(category, title, content) VALUES ('"
+			<< text.getCategory() << "','"
+			<< text.getTitle() << "','"
+			<< text.getContents() << ");";
+	query.flush();
+
+	bool ret = true;
+
+	try
+	{
+		db_.execQuery(query.str().c_str());
+	}
+	catch (std::exception ex)
+	{
+		ret = false;
+	}
+
+	std::string sql("SELECT idx FROM Text ORDER BY idx DESC;");
+
+	try
+	{
+		text.setIdx(db_.execScalar(sql.c_str()));
+	}
+	catch (std::exception ex)
+	{
+		ret = false;
+	}
+
+	return ret;
+
+}
+
+bool TextReader::update( Text& text )
+{
+	std::stringstream query;
+	query	<< "UPDATE Text "
+			<< "SET ("
+			<< "category = '"	<< text.getCategory()	<< "',"
+			<< "title = '"		<< text.getTitle()		<< "',"
+			<< "content = '"	<< text.getTitle()		<< "',"
+			<< "path = '"		<< text.getContents()	<< "')"
+			<< "WHERE (idx = "  << text.getIdx()		<< ");";
+	query.flush();
+
+	bool ret = true;
+
+	try
+	{
+		db_.execQuery(query.str().c_str());
+	}
+	catch (std::exception ex)
+	{
+		ret = false;
+	}
+
+	return ret;
+}
+
+bool TextReader::del( Text& text )
+{
+	std::stringstream query;
+	query	<< "DELETE FROM Text "
+			<< "WHERE (idx = "  << text.getIdx()		<< ");";
+	query.flush();
+
+	bool ret = true;
+
+	try
+	{
+		db_.execQuery(query.str().c_str());
+	}
+	catch (std::exception ex)
+	{
+		ret = false;
+	}
+
+	return ret;
+}
+
+std::vector<Text> TextReader::getTotal()
+{
+	std::stringstream query;
+	query << "SELECT (idx, category, title, content, path, create_date, modify_date) FROM Text;";
+	query.flush();
+
+	std::vector<Text> txts;
+	CppSQLite3Query q;
+
+	try
+	{
+		q = db_.execQuery(query.str().c_str());
+	}
+	catch (std::exception ex)
+	{
+		return txts;
+	}
+
+	Text txt;
+
+	for(; !q.eof(); q.nextRow())
+	{
+		txt.setIdx(q.getIntField("idx"));
+		txt.setCategory(q.getStringField("category"));
+		txt.setTitle(q.getStringField("title"));
+		txt.setContents(q.getStringField("content"));
+		// create_date
+		// modify_date
+		txts.push_back(txt);
+	}
+
+	return txts;
+}
+
+bool TextReader::createTagsTable()
+{
+	bool ret = true;
+
+	std::string query("CREATE TABLE ");
+
+	query.append("Tags (" );
+
+	query.append("idx INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL, ");
+	query.append("content_idx INTEGER NOT NULL, ");
+	query.append("name VARCHAR NOT NULL, ");
+	query.append("type INTEGER NOT NULL");
+	query.append(");");
+
+	try
+	{
+		db_.execQuery(query.c_str());
+	}
+	catch (std::exception ex)
+	{
+		ret = false;
+	}
+
+	return ret;
+}
+
+bool TextReader::isOpened()
+{
+	return isOpened_;
+}
+
+bool TextReader::close()
+{
+	try
+	{
+		db_.close();
+		isOpened_ = false;
+	}
+	catch (...)
+	{
+		;
+	}
+
+	return !isOpened_;
+}
+
+bool TextReader::initialize()
+{
+	bool result = false;
+
+	if(isOpened() == false) 
+		result = open(path_);
+
+	if(!result) return false;
+
+	if(verifyTable("Text") == false) 
+		result = createTextTable();
+
+	if(!result) return false;
+
+	if(verifyTable("Tags") == false) 
+		result = createTagsTable();
+
+	if(!result) return false;
+
+	return true;
+}
+
+void TextReader::setPath( const std::string& path )
+{
+	path_ = path;
+	path_.append("\\Text.db");
+}
+
+std::vector<std::string> TextReader::getCategories()
+{
+	std::stringstream query;
+	query << "SELECT DISTINCT(category) FROM Text;";
+	query.flush();
+
+	std::vector<std::string> categories;
+	CppSQLite3Query q;
+
+	try
+	{
+		q = db_.execQuery(query.str().c_str());
+	}
+	catch (std::exception ex)
+	{
+		return categories;
+	}
+
+	for(; !q.eof(); q.nextRow())
+	{
+		categories.push_back(q.getStringField("category"));
+	}
+
+	return categories;
+}
