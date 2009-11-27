@@ -51,7 +51,7 @@
 				PrecompiledHeaderThrough="oot.h"
 				WarningLevel="3"
 				DebugInformationFormat="4"
-				DisableSpecificWarnings="4250;4819"
+				DisableSpecificWarnings="4819;4520"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -256,10 +256,30 @@
 				RelativePath="..\..\src\Text.h"
 				>
 			</File>
+			<File
+				RelativePath="..\..\src\TextReader.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\TextReader.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\Todo.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\Todo.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="oot"
 			>
+			<File
+				RelativePath="..\..\src\BoostTypes.h"
+				>
+			</File>
 			<File
 				RelativePath="..\..\src\oot\Util.cpp"
 				>
@@ -270,168 +290,84 @@
 			</File>
 		</Filter>
 		<Filter
-			Name="sqlite3x"
-			>
-			<File
-				RelativePath="..\..\src\sqlite3x\sqlite3x.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\sqlite3x\sqlite3x_command.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\sqlite3x\sqlite3x_connection.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\sqlite3x\sqlite3x_exception.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\sqlite3x\sqlite3x_reader.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\sqlite3x\sqlite3x_transaction.cpp"
-				>
-			</File>
-		</Filter>
-		<Filter
 			Name="ui"
 			>
-			<File
-				RelativePath="..\..\src\ui\ListWindow.cpp"
+			<Filter
+				Name="config"
 				>
-			</File>
-			<File
-				RelativePath="..\..\src\ui\ListWindow.h"
+				<File
+					RelativePath=".\WindowPreference.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\WindowPreference.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="main"
 				>
-			</File>
-			<File
-				RelativePath="..\..\src\ui\LStoreSubCategory.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ui\LStoreSubCategory.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ui\LViewSubCategory.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ui\LViewSubCategory.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ui\PreviewWindow.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ui\PreviewWindow.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ui\WindowCategory.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ui\WindowCategory.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ui\WindowSignpost.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ui\WindowSignpost.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ui\WindowSubCategory.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ui\WindowSubCategory.h"
-				>
-			</File>
+				<File
+					RelativePath="..\..\src\ui\LStoreCategory.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ui\LStoreCategory.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ui\LStoreSubCategory.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ui\LStoreSubCategory.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ui\WindowCategory.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ui\WindowCategory.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ui\WindowList.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ui\WindowList.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ui\WindowPreview.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ui\WindowPreview.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ui\WindowSignpost.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ui\WindowSignpost.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ui\WindowSubCategory.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ui\WindowSubCategory.h"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="x"
 			>
-			<File
-				RelativePath="..\..\src\x\BasicInfo.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\x\BasicInfo.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\x\Buttons.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\x\Buttons.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\x\CategoryDatabase.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\x\CategoryDatabase.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\x\CategoryListStore.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\x\CategoryListStore.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\x\CategoryListView.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\x\CategoryListView.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\x\ItemDatabase.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\x\ItemDatabase.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\x\SignpostWindow.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\x\SignpostWindow.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\x\TaskAddWindow.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\x\TaskAddWindow.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\x\TaskItemDatabase.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\x\TaskItemDatabase.h"
-				>
-			</File>
 		</Filter>
 		<Filter
 			Name="markdown"
@@ -452,6 +388,10 @@
 				RelativePath="..\..\src\markdown\markdown.h"
 				>
 			</File>
+		</Filter>
+		<Filter
+			Name="sqlite3pp"
+			>
 		</Filter>
 		<Filter
 			Name="cppsqlite3"
