@@ -12,14 +12,14 @@ public:
 
 public:
 	int getCount();
-	std::wstring get(int idx);
-	bool has(const std::wstring& tag);
-	void add(const std::wstring& tag);
+	std::string get(int idx);
+	bool has(const std::string& tag);
+	void add(const std::string& tag);
 	void clear();
-	void remove(const std::wstring& tag);
-	std::wstring toString();
+	void remove(const std::string& tag);
+	std::string toString();
 
 private:
-	std::vector<std::wstring> tags_;
-	boost::mutex mutex_;
+	std::vector<std::string> tags_;
+	//boost::mutex mutex_;
 };

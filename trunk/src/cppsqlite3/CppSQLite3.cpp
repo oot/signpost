@@ -26,10 +26,8 @@
 //						-Added CppSQLiteDB3::tableExists()
 ////////////////////////////////////////////////////////////////////////////////
 #include "oot.h"
-
 #include "CppSQLite3.h"
 #include <cstdlib>
-
 
 // Named constant for passing to CppSQLite3Exception when passing it a string
 // that cannot be deleted.

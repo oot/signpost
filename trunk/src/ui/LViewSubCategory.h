@@ -2,6 +2,8 @@
 
 #include <gtkmm.h>
 
+
+
 class LViewSubCategory : public Gtk::ListViewText
 {
 public:

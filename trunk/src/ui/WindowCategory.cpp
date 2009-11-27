@@ -2,44 +2,37 @@
 #include "WindowCategory.h"
 
 WindowCategory::WindowCategory(void)
+: lvText_(0)
 {
-	add(categoryListView_);
+	add(lvText_);
 
-	categoryListStoreRef_ = CategoryListStore::create(categoryListColumns_);
-	categoryListView_.set_model(categoryListStoreRef_);
+	lStore_ = LStoreCategory::create(cols_);
+	lvText_.set_model(lStore_);
 
 	//////////////////////////////////////////////////////////////////////////
 	//Fill the TreeView's model
-	Gtk::TreeModel::Row row = *(categoryListStoreRef_->append());
-	row[categoryListColumns_.isSelected] = false;
-	row[categoryListColumns_.categoryName] = "Text";
+	Gtk::TreeModel::Row row = *(lStore_->append());
+	row[cols_.isSelected] = false;
+	row[cols_.name] = "Text";
+	row[cols_.item] = Item::Text;
 
-	row = *(categoryListStoreRef_->append());
-	row[categoryListColumns_.isSelected] = true;
-	row[categoryListColumns_.categoryName] = "Picture";
+	row = *(lStore_->append());
+	row[cols_.isSelected] = false;
+	row[cols_.name] = "Picture";
+	row[cols_.item] = Item::Picture;
 
-	row = *(categoryListStoreRef_->append());
-	row[categoryListColumns_.isSelected] = false;
-	row[categoryListColumns_.categoryName] = "Documents";
+	row = *(lStore_->append());
+	row[cols_.isSelected] = false;
+	row[cols_.name] = "Documents";
+	row[cols_.item] = Item::Document;
 	//////////////////////////////////////////////////////////////////////////
-/*
 
-	Gtk::CellRendererToggle* cell = Gtk::manage(new Gtk::CellRendererToggle);
+ 	lvText_.append_column_editable("!", cols_.isSelected);
+ 	lvText_.append_column("Category", cols_.name);
 
-	int cols_count = categoryListView_.append_column("isSelected", *cell);
-
-	Gtk::TreeViewColumn* pColumn = categoryListView_.get_column(cols_count - 1);
-	if(pColumn)
-	{
-		//pColumn->add_attribute(cell->property_value(), categoryListColumns_.isSelected);
-		pColumn->add_attribute(*cell, "value", categoryListColumns_.isSelected);
-	}
-	categoryListView_.append_column("Category", categoryListColumns_.categoryName);
-	*/
-
-
-	categoryListView_.append_column_editable("Select", categoryListColumns_.isSelected);
-	categoryListView_.append_column("Category", categoryListColumns_.categoryName);
+	lStore_->signal_row_changed().connect(
+							sigc::mem_fun(*this, &WindowCategory::onRowChanged)
+							);
 
 	//////////////////////////////////////////////////////////////////////////
 
@@ -51,4 +44,20 @@ WindowCategory::WindowCategory(void)
 
 WindowCategory::~WindowCategory(void)
 {
+}
+
+ConnectionType WindowCategory::changeHandler( SignalIntType::slot_function_type func )
+{
+	return signal_.connect(func);
+}
+
+void WindowCategory::onRowChanged( const Gtk::TreeModel::Path& path, const Gtk::TreeModel::iterator& it )
+{
+	Gtk::TreeRow row = (*it);
+	if(row)
+	{
+		Item::Type itemType = row[cols_.item];
+		signal_(itemType);
+	}
+
 }

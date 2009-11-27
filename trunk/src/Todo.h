@@ -2,29 +2,37 @@
 
 #include "Item.h"
 
-class Task : public Item
+class Todo : public Item
 {
 public:
-	Task(void);
-	~Task(void);
+	Todo(void);
+	~Todo(void);
 
-	enum StateType { InProgress, NotStarted, Canceled, Completed, Holding, Waiting, Pledge };
+	enum StateType { 
+		StateInProgress, 
+		StateNotStarted, 
+		StateCanceled, 
+		StateCompleted, 
+		StateHolding, 
+		StateWaiting, 
+		StatePledge 
+	};
 
-	virtual Item::Type getType() { return Item::Task; }
+	virtual Item::Type getType() { return Item::Todo; }
 	virtual DateTimeType getDateForDisplay() { return completedDate_; }
-	virtual std::tstring getTitle() { return title_; }
-	virtual std::tstring getContents() { return description_; }
+	virtual std::string getTitle() { return title_; }
+	virtual std::string getContents() { return description_; }
 
-	void setTitle(const std::tstring& title) { title_ = title; }
-	void setContents(const std::tstring& contents) { description_ = contents; }
+	void setTitle(const std::string& title) { title_ = title; }
+	void setContents(const std::string& contents) { description_ = contents; }
 	void setState(StateType status) { status_ = status; }
 	StateType getState() { return status_; }
 	int getProgress() { return progress_; }
 	void setProgress(int progress) { progress_ = progress; }
 
 private:
-	std::tstring title_;
-	std::tstring description_;
+	std::string title_;
+	std::string description_;
 
 	int progress_;
 	StateType status_;

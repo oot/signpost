@@ -1,10 +1,10 @@
 #include "oot.h"
-#include "Task.h"
+#include "Todo.h"
 
-Task::Task(void)
+Todo::Todo(void)
 {
 }
 
-Task::~Task(void)
+Todo::~Todo(void)
 {
 }

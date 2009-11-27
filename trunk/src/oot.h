@@ -8,5 +8,10 @@
 #include <cstdio>
 #include <gtkmm.h>
 
+namespace oot {};
+
+using namespace oot;
+using namespace std;
+
 #endif
 

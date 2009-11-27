@@ -15,7 +15,7 @@ public:
 
 	virtual void getCategories() = 0;
 
-	virtual std::wstring getSql() = 0;
+	virtual std::string getSql() = 0;
 
 
 };

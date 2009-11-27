@@ -14,17 +14,23 @@ public:
 	Item(void);
 	~Item(void);
 
-	enum Type { Task, Text, Contact, Photo, Picture, Document, Game, Music, Binary, Event };
+	enum Type : int { Todo, Text, Contact, Photo, Picture, Document, Game, Music, Binary, Event, Location, TypeMax };
 
-
+	enum View : int { 
+		ViewDetail,
+		ViewList,
+		ViewSummary,
+	};
 
 public:
-	virtual Item::Type getType() = 0;
-	virtual DateTimeType getDateForDisplay() = 0;
-	virtual std::wstring getTitle() = 0;
-	virtual std::wstring getContents() = 0;
+	virtual Item::Type getType() const = 0;
+	virtual DateTimeType getDisplayDate() const = 0;
+	virtual std::string getTitle() const = 0;
+	virtual std::string getContents() const = 0;
+	virtual std::string getPath() const = 0;
+	virtual DateTimeType getDateTime(View view) const = 0;
 	
-	Tags& getTags() { return tags_; }
+	void getTags(Tags* tags);
 	void setIdx(unsigned idx) {idx_ = idx; }
 	unsigned getIdx() { return idx_; }
 	
