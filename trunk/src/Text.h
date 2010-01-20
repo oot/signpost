@@ -15,6 +15,8 @@ public:
 	virtual DateTimeType getDateTime(View view) const;
 	virtual std::string getPath() const {return path_; }
 
+	void setPath(const string& path) {path_ = path; }
+
 	void setCategory(const std::string& category) {category_ = category; }
 	std::string getCategory() const {return category_; }
 

@@ -14,7 +14,7 @@ public:
 	Gtk::TreeModelColumn<bool> isSelected;
 	//Gtk::TreeModelColumn<Glib::RefPtr<Gdk::Pixbuf> > icon; 
 	Gtk::TreeModelColumn<int> icon; 
-	Gtk::TreeModelColumn<Glib::ustring> name;
+	Gtk::TreeModelColumn<std::string> name;
 
 };
 

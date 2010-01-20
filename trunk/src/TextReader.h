@@ -23,6 +23,7 @@ public:
 	bool update(Text& text);
 	bool del(Text& text);
 	Text get(const int idx);
+	std::vector<Text> get(std::vector<std::string> categories);
 
 	std::vector<Text> getTotal();
 	std::vector<std::string> getCategories();

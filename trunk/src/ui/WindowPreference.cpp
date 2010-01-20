@@ -2,6 +2,7 @@
 #include "WindowPreference.h"
 
 WindowPreference::WindowPreference(void)
+: lvTextItem_(0)
 {
 	add(hpaned_);
 
