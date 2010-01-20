@@ -13,7 +13,7 @@ public:
 	};
 
 	Gtk::TreeModelColumn<bool> isSelected;
-	Gtk::TreeModelColumn<Glib::ustring> name;
+	Gtk::TreeModelColumn<std::string> name;
 	Gtk::TreeModelColumn<Item::Type> item;
 
 };

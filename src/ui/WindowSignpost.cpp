@@ -5,14 +5,15 @@
 #include "BoostTypes.h"
 
 WindowSignpost::WindowSignpost(void)
-:tbuttonNew_(Gtk::Stock::NEW),
-mitemOpen_("Open"),
-mitemClose_("Close"),
-mitemQuit_("Quit"),
-mitemAbout_("About"),
-mitemFile_("File"),
-mitemView_("View"),
-mitemHelp_("Help")
+: tbuttonNew_(Gtk::Stock::NEW)
+, tbuttonAddText_(Gtk::Stock::ADD)
+, mitemOpen_("Open")
+, mitemClose_("Close")
+, mitemQuit_("Quit")
+, mitemAbout_("About")
+, mitemFile_("File")
+, mitemView_("View")
+, mitemHelp_("Help")
 {
 	set_title("signpost");
 
@@ -45,6 +46,7 @@ mitemHelp_("Help")
 	menubar_.add(mitemHelp_);
 
 	toolbar_.append(tbuttonNew_);
+	toolbar_.append(tbuttonAddText_);
 
 	menuFile_.append(mitemOpen_);
 	menuFile_.append(mitemClose_);
@@ -61,6 +63,9 @@ mitemHelp_("Help")
 	initializeItem();
 
 	swinCategory_.changeHandler(boost::bind(&WindowSignpost::onCategoryChange, this, _1));
+	swinSubCategory_.changeHandler(boost::bind(&WindowSignpost::onSubCategoryChange, this, _1));
+
+	tbuttonAddText_.signal_clicked().connect(sigc::mem_fun(*this, &WindowSignpost::onButtonAddText));
 
 	show_all_children();
 
@@ -108,7 +113,23 @@ void WindowSignpost::changeSubCategory()
 	swinSubCategory_.setData(subCategories);
 }
 
-void WindowSignpost::onSubCategoryChange( int itemType, const std::string& category )
+void WindowSignpost::onSubCategoryChange( CategorySelect select )
 {
+	if(!select.isSelected) return;
 
+	if(select.type == Item::Text)
+	{
+		vector<string> categories;
+
+		categories.push_back(select.category);
+
+		vector<Text> txts = textReader_.get(categories);
+		swinItemList_.setItemData(txts);
+	}
+}
+
+void WindowSignpost::onButtonAddText()
+{
+	winAddText.setTextReader(&textReader_);
+	winAddText.show_all();
 }

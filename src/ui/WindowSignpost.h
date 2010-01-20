@@ -9,6 +9,8 @@
 
 #include "TextReader.h"
 
+#include "WindowAddText.h"
+
 class WindowSignpost : public Gtk::Window
 {
 public:
@@ -20,9 +22,12 @@ public:
 private:
 	void initializeItem();
 	void onCategoryChange(int itemType);
-	void onSubCategoryChange(int itemType, const std::string& category);
+	void onSubCategoryChange(CategorySelect select);
 	void changeSubCategory();
 	void changeItemList();
+
+	//////////////////////////////////////////////////////////////////////////
+	void onButtonAddText();
 
 private:
 	Gtk::VBox vbox_;
@@ -59,6 +64,13 @@ private:
 
 	Gtk::ToolItem titemNew_;
 	Gtk::ToolButton tbuttonNew_;
+
+	//////////////////////////////////////////////////////////////////////////
+	// For Test
+	//////////////////////////////////////////////////////////////////////////
+	Gtk::ToolButton tbuttonAddText_;
+	WindowAddText winAddText;
+	//////////////////////////////////////////////////////////////////////////
 
 	Gtk::Menu_Helpers::MenuList mlist_;
 

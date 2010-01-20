@@ -33,8 +33,15 @@ void WindowSubCategory::onRowChanged( const Gtk::TreeModel::Path& path, const Gt
 	Gtk::TreeRow row = (*it);
 	if(row)
 	{
-		string category = row[cols_.name];
-		//signal_(category);
+		CategorySelect item;
+
+		item.category = row[cols_.name];
+		item.isSelected = row[cols_.isSelected];
+		int itemType = row[cols_.icon];
+
+		item.type = scast<Item::Type>(itemType);
+
+		signal_(item);
 	}
 }
 
@@ -60,4 +67,9 @@ void WindowSubCategory::setData( std::map<Item::Type, std::vector<std::string> >
 
 		//std::for_each(categories.begin(), categories.end(), )
 	}
+}
+
+ConnectionType WindowSubCategory::changeHandler( SignalCategorySelectType::slot_function_type func )
+{
+	return signal_.connect(func);
 }

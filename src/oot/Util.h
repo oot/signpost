@@ -23,6 +23,7 @@ namespace oot {	namespace util {
 
 	std::string getProgramPath(bool isDirOnly = true);
 	bool makeDir(const std::string& path);
+	bool existDir(const string& path);
 
 	std::string getCurrentDateTime();
 

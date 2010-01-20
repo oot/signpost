@@ -1,5 +1,6 @@
 #include "oot.h"
 #include "TextReader.h"
+#include "oot/Util.h"
 
 TextReader::TextReader(void)
 : isOpened_(false)
@@ -74,12 +75,34 @@ bool TextReader::createTextTable()
 
 bool TextReader::add( Text& text )
 {
+	string relPath(text.getCategory());
+	string absPath(path_);
+	absPath.append("\\");
+	absPath.append(relPath);
+
+	if(util::existDir(absPath) == false) util::makeDir(absPath);
+
+	string filename(util::getCurrentDateTime());
+	filename.append(" - ");
+	filename.append(text.getTitle());
+	filename.append(".txt");
+
+	
+	relPath.append("\\");
+	relPath.append(filename);
+
+	absPath.append("\\");
+	absPath.append(filename);
+
+	text.setPath(relPath);
+
 	std::stringstream query;
 	query	<< "INSERT INTO Text "
-			<< "(category, title, content) VALUES ('"
+			<< "(category, title, content, path) VALUES ('"
 			<< text.getCategory() << "','"
 			<< text.getTitle() << "','"
-			<< text.getContents() << ");";
+			<< text.getContents() << "','"
+			<< text.getPath() << "');";
 	query.flush();
 
 	bool ret = true;
@@ -88,10 +111,26 @@ bool TextReader::add( Text& text )
 	{
 		db_.execQuery(query.str().c_str());
 	}
-	catch (std::exception ex)
+	catch (...)
 	{
 		ret = false;
 	}
+
+	ofstream out(absPath.c_str());
+
+	if(out)
+	{
+		out << text.getContents();
+		out.flush();
+		out.close();
+		ret = true;
+	}
+	else
+	{
+		ret = false;
+	}
+
+	if(ret == false) return ret;
 
 	std::string sql("SELECT idx FROM Text ORDER BY idx DESC;");
 
@@ -115,8 +154,8 @@ bool TextReader::update( Text& text )
 			<< "SET ("
 			<< "category = '"	<< text.getCategory()	<< "',"
 			<< "title = '"		<< text.getTitle()		<< "',"
-			<< "content = '"	<< text.getTitle()		<< "',"
-			<< "path = '"		<< text.getContents()	<< "')"
+			<< "content = '"	<< text.getContents()		<< "',"
+			<< "path = '"		<< text.getPath()	<< "')"
 			<< "WHERE (idx = "  << text.getIdx()		<< ");";
 	query.flush();
 
@@ -158,7 +197,7 @@ bool TextReader::del( Text& text )
 std::vector<Text> TextReader::getTotal()
 {
 	std::stringstream query;
-	query << "SELECT (idx, category, title, content, path, create_date, modify_date) FROM Text;";
+	query << "SELECT idx, category, title, content, path, create_date, modify_date FROM Text;";
 	query.flush();
 
 	std::vector<Text> txts;
@@ -287,4 +326,52 @@ std::vector<std::string> TextReader::getCategories()
 	}
 
 	return categories;
+}
+
+std::vector<Text> TextReader::get( std::vector<std::string> categories )
+{
+	std::stringstream query;
+	query << "SELECT idx, category, title, content, path, create_date, modify_date FROM Text ";
+	if(categories.empty() == false)
+	{
+		query << "WHERE ";
+
+		for(unsigned i = 0; i < categories.size(); i++)
+		{
+			if(i) query << "OR ";
+			query << "(category = '" << categories[i] << "') ";
+		}
+	}
+	query.flush();
+
+	std::vector<Text> txts;
+	CppSQLite3Query q;
+
+	try
+	{
+		q = db_.execQuery(query.str().c_str());
+	}
+	catch (std::exception ex)
+	{
+		return txts;
+	}
+	catch(...)
+	{
+		return txts;
+	}
+
+	Text txt;
+
+	for(; !q.eof(); q.nextRow())
+	{
+		txt.setIdx(q.getIntField("idx"));
+		txt.setCategory(q.getStringField("category"));
+		txt.setTitle(q.getStringField("title"));
+		txt.setContents(q.getStringField("content"));
+		// create_date
+		// modify_date
+		txts.push_back(txt);
+	}
+
+	return txts;
 }

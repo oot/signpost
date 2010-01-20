@@ -166,7 +166,7 @@ std::string getCurrentDateTime()
 	localtime_s(&t, &tb.time);
 
 	char datetime[100] = { '\0' };
-	sprintf_s(datetime, 100, "%04d-%02d-%02dT%02d:%02d:%02d.%03d", 
+	sprintf_s(datetime, 100, "%04d%02d%02dT%02d%02d%02d.%03d", 
 			t.tm_year + 1900,
 			t.tm_mon + 1,
 			t.tm_mday,
@@ -178,6 +178,13 @@ std::string getCurrentDateTime()
 	std::string datetimeStr(datetime);
 
 	return datetimeStr;
+}
+
+bool existDir( const string& path )
+{
+	if(_chdir(path.c_str())) return false;
+
+	return true;
 }
 
 }} /* namespace oot::util */
