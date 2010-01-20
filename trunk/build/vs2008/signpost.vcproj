@@ -296,11 +296,11 @@
 				Name="config"
 				>
 				<File
-					RelativePath=".\WindowPreference.cpp"
+					RelativePath="..\..\src\ui\WindowPreference.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\WindowPreference.h"
+					RelativePath="..\..\src\ui\WindowPreference.h"
 					>
 				</File>
 			</Filter>
@@ -313,6 +313,14 @@
 				</File>
 				<File
 					RelativePath="..\..\src\ui\LStoreCategory.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ui\LstoreItemList.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ui\LstoreItemList.h"
 					>
 				</File>
 				<File
@@ -364,6 +372,18 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="test"
+				>
+				<File
+					RelativePath="..\..\src\ui\WindowAddText.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ui\WindowAddText.h"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="x"
@@ -407,10 +427,6 @@
 		</Filter>
 		<File
 			RelativePath="..\..\src\DatabaseTable.txt"
-			>
-		</File>
-		<File
-			RelativePath=".\ReadMe.txt"
 			>
 		</File>
 	</Files>
