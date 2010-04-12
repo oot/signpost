@@ -22,7 +22,7 @@ public:
 private:
 	void initializeItem();
 	void onCategoryChange(int itemType);
-	void onSubCategoryChange(CategorySelect select);
+	void onSubCategoryChange(vector<CategorySelect>& select);
 	void changeSubCategory();
 	void changeItemList();
 
