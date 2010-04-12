@@ -4,7 +4,19 @@
 WindowSubCategory::WindowSubCategory(void)
 : lvText_(0)
 {
-	add(lvText_);
+	//add(vbox_);
+	pack_start(toolbar_, false, true, 0);
+	pack_start(sWindow_);
+
+	toolbar_.set_toolbar_style(Gtk::TOOLBAR_TEXT);
+	toolbar_.append(tbuttonNew_, sigc::mem_fun(*this, &WindowSubCategory::onButtonNew));
+	toolbar_.append(tbuttonDelete_, sigc::mem_fun(*this, &WindowSubCategory::onButtonDelete));
+
+	tbuttonNew_.set_label("new");
+	tbuttonDelete_.set_label("delete");
+
+	sWindow_.add(lvText_);
+	sWindow_.set_policy(Gtk::POLICY_NEVER, Gtk::POLICY_AUTOMATIC);
 
 	lStore_ = LStoreSubCategory::create(cols_);
 	lvText_.set_model(lStore_);
@@ -41,7 +53,18 @@ void WindowSubCategory::onRowChanged( const Gtk::TreeModel::Path& path, const Gt
 
 		item.type = scast<Item::Type>(itemType);
 
-		signal_(item);
+		vector<CategorySelect>::iterator itSelected = find(selectedItems_.begin(), selectedItems_.end(), item);
+
+		if(itSelected != selectedItems_.end())
+		{
+			(*itSelected) = item;
+		}
+		else
+		{
+			selectedItems_.push_back(item);
+		}
+
+		signal_(selectedItems_);
 	}
 }
 
@@ -69,7 +92,23 @@ void WindowSubCategory::setData( std::map<Item::Type, std::vector<std::string> >
 	}
 }
 
-ConnectionType WindowSubCategory::changeHandler( SignalCategorySelectType::slot_function_type func )
+ConnectionType WindowSubCategory::changeHandler( SignalCategoriesSelectType::slot_function_type func )
 {
 	return signal_.connect(func);
+}
+
+void WindowSubCategory::onButtonNew()
+{
+
+}
+
+void WindowSubCategory::onButtonDelete()
+{
+	Gtk::ListViewText::SelectionList slist = lvText_.get_selected();
+
+	if(slist.empty()) return;
+
+	unsigned idx = slist[0];
+
+//	ustring str = lvText_.get_text(idx, 1);
 }

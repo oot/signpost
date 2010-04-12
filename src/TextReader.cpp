@@ -330,7 +330,12 @@ std::vector<std::string> TextReader::getCategories()
 
 std::vector<Text> TextReader::get( std::vector<std::string> categories )
 {
+	std::vector<Text> txts;
+	CppSQLite3Query q;
 	std::stringstream query;
+
+	if(categories.empty()) return txts;
+
 	query << "SELECT idx, category, title, content, path, create_date, modify_date FROM Text ";
 	if(categories.empty() == false)
 	{
@@ -344,9 +349,7 @@ std::vector<Text> TextReader::get( std::vector<std::string> categories )
 	}
 	query.flush();
 
-	std::vector<Text> txts;
-	CppSQLite3Query q;
-
+	
 	try
 	{
 		q = db_.execQuery(query.str().c_str());

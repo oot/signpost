@@ -35,7 +35,7 @@ WindowSignpost::WindowSignpost(void)
 
 	swinCategory_.set_policy(Gtk::POLICY_NEVER, Gtk::POLICY_AUTOMATIC);
 	swinCategory_.set_size_request(150, 150);
-	swinSubCategory_.set_policy(Gtk::POLICY_NEVER, Gtk::POLICY_AUTOMATIC);
+	//swinSubCategory_.set_policy(Gtk::POLICY_NEVER, Gtk::POLICY_AUTOMATIC);
 	swinItemList_.set_policy(Gtk::POLICY_NEVER, Gtk::POLICY_AUTOMATIC);
 	swinItemList_.set_size_request(300);
 	swinItemView_.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC);
@@ -113,19 +113,20 @@ void WindowSignpost::changeSubCategory()
 	swinSubCategory_.setData(subCategories);
 }
 
-void WindowSignpost::onSubCategoryChange( CategorySelect select )
+void WindowSignpost::onSubCategoryChange( vector<CategorySelect>& select )
 {
-	if(!select.isSelected) return;
+	vector<string> categories;
 
-	if(select.type == Item::Text)
+	for(unsigned i = 0; i < select.size(); i++)
 	{
-		vector<string> categories;
-
-		categories.push_back(select.category);
-
-		vector<Text> txts = textReader_.get(categories);
-		swinItemList_.setItemData(txts);
+		if(select[i].isSelected)
+		{
+			categories.push_back(select[i].category);
+		}
 	}
+
+	vector<Text> txts = textReader_.get(categories);
+	swinItemList_.setItemData(txts);
 }
 
 void WindowSignpost::onButtonAddText()
