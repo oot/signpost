@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __ITEM_H__
+#define __ITEM_H__
 
 #include "oot.h"
 #include <vector>
@@ -39,3 +40,5 @@ private:
 	unsigned idx_;
 
 };
+
+#endif // __ITEM_H__

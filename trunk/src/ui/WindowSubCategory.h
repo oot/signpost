@@ -12,7 +12,7 @@ public:
 	Item::Type type;
 	bool isSelected;
 
-	const CategorySelect& CategorySelect::operator=( const CategorySelect& rhs )
+	const CategorySelect& operator=( const CategorySelect& rhs )
 	{
 		if (this != &rhs)
 		{
@@ -23,7 +23,7 @@ public:
 		return *this; 
 	}
 
-	const bool CategorySelect::operator==( const CategorySelect& rhs )
+	const bool operator==( const CategorySelect& rhs )
 	{
 
 		if(this->category == rhs.category && this->type == rhs.type) return true;

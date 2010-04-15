@@ -77,7 +77,7 @@ bool TextReader::add( Text& text )
 {
 	string relPath(text.getCategory());
 	string absPath(path_);
-	absPath.append("\\");
+	absPath.append(util::getDirDelimeter());
 	absPath.append(relPath);
 
 	if(util::existDir(absPath) == false) util::makeDir(absPath);
@@ -88,10 +88,10 @@ bool TextReader::add( Text& text )
 	filename.append(".txt");
 
 	
-	relPath.append("\\");
+	relPath.append(util::getDirDelimeter());
 	relPath.append(filename);
 
-	absPath.append("\\");
+	absPath.append(util::getDirDelimeter());
 	absPath.append(filename);
 
 	text.setPath(relPath);
@@ -299,7 +299,8 @@ bool TextReader::initialize()
 void TextReader::setPath( const std::string& path )
 {
 	path_ = path;
-	path_.append("\\Text.db");
+	path_.append(util::getDirDelimeter());
+	path_.append("Text.db");
 }
 
 std::vector<std::string> TextReader::getCategories()

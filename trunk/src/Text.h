@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __TEXT_H__
+#define __TEXT_H__
 
 #include "Item.h"
 
@@ -33,3 +34,5 @@ private:
 	std::string category_;
 	std::string path_;
 };
+
+#endif // __TEXT_H__

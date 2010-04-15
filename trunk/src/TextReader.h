@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __TEXT_READER_H__
+#define __TEXT_READER_H__
 
 #include "Text.h"
 #include "ISearchFilter.h"
@@ -41,3 +42,5 @@ private:
 
 	std::string path_;
 };
+
+#endif // __TEXT_READER_H__
