@@ -1,5 +1,5 @@
-#ifndef OOT_H_INLCUDE
-#define OOT_H_INCLUDE
+#ifndef __OOT_H__
+#define __OOT_H__
 
 #include <string>
 #include <iostream>
@@ -10,7 +10,9 @@
 
 #define scast	static_cast			
 #define rcast	reinterpret_cast	
-#define dcast	dynamic_cast		
+#define dcast	dynamic_cast
+
+#define MAX_PATH 255
 
 namespace oot {};
 

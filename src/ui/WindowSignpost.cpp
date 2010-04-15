@@ -82,8 +82,10 @@ void WindowSignpost::initializeItem()
 	selectedCategory_.resize((unsigned)Item::TypeMax, false);
 	using namespace oot::util;
 
-	std::string path = getProgramPath();
-	path.append("\\Text");
+	std::string path;
+	getProgramPath(path);
+	path.append(getDirDelimeter());
+	path.append("Text");
 
 	textReader_.setPath(path);
 	textReader_.initialize();

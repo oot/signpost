@@ -1,11 +1,70 @@
 #include "oot.h"
 #include "Util.h"
 
-#include <windows.h> // GetModuleFileName
-#include <direct.h> // _mkdir
+#include <cstdio>    // FILENAME_MAX
+
+#ifdef WINDOWS
+#include <windows.h> // windows GetModuleFileName
+#include <direct.h>  // windows _mkdir
+#else
+#include <unistd.h>    // linux chdir
+#include <sys/stat.h>  // linux mkdir
+#endif
+
 #include <sys/timeb.h> // _timeb
 
 namespace oot {	namespace util {
+
+std::string getDirDelimeter()
+{
+#ifdef WINDOWS
+	return "\\";
+#else
+	return "/";
+#endif
+}
+
+bool getCurrentWorkingDir(std::string& dir)
+{
+	char currPath[FILENAME_MAX] = { '\0' };
+	bool isOk = false;
+
+#ifdef WINDOWS
+	isOk = _getcwd(currPath, sizeof(currPath)) ? true : false;
+#else
+	isOk = getcwd(currPath, sizeof(currPath)) ? true : false;
+#endif
+
+	dir = currPath;
+	return isOk;
+}
+
+bool getProgramPath(std::string& path, bool isDirOnly /*= true*/)
+{
+	int bytes = 0;
+	char chars[FILENAME_MAX] = { '\0' };
+
+#ifdef WINDOWS
+	bytes = GetModuleFileName(NULL, chars, FILENAME_MAX);
+#else
+	char tempChars[32] = { '\0' };
+	snprintf(tempChars, 32 - 1, "/proc/%d/exe", getpid());
+	bytes = readlink(tempChars, chars, FILENAME_MAX);
+	if(bytes > (FILENAME_MAX - 1)) bytes = FILENAME_MAX - 1;
+	if(bytes >= 0) chars[bytes] = '\0';
+#endif
+
+	path = chars;
+
+	if(isDirOnly)
+	{
+		int nIndex = path.find_last_of(getDirDelimeter());
+		path = path.substr(0, nIndex);
+	}
+
+	if(bytes == 0) return false;
+	else return true;
+}
 
 std::string trim( std::string& str )
 {
@@ -121,19 +180,20 @@ std::string getProgramPath( bool isDirOnly /*= true*/ )
 {
 	char szBuffer[MAX_PATH];
 	std::string strRet;
-	::GetModuleFileNameA(NULL, szBuffer, MAX_PATH);
+//	::GetModuleFileNameA(NULL, szBuffer, MAX_PATH);
+	strRet = "./";
 	strRet = szBuffer;
 
 	if(!isDirOnly)
 		return strRet;
 
-	int nIndex = strRet.find_last_of('\\');
+	int nIndex = strRet.find_last_of(getDirDelimeter());
 	return strRet.substr(0, nIndex);
 }
 
 bool makeDir( const std::string& path )
 {
-	std::vector<std::string> dirs = split(path, "\\");
+	std::vector<std::string> dirs = split(path, getDirDelimeter());
 
 	if(dirs.empty()) return false;
 
@@ -143,15 +203,22 @@ bool makeDir( const std::string& path )
 	for(i = 0; i < (dirs.size() - 1); i++)
 	{
 		if(i == 0) dir = dirs[i];
-		else dir.append("\\" + dirs[i]);
-
+		else dir.append(getDirDelimeter() + dirs[i]);
+#ifdef WINDOWS
 		int ret = _mkdir(dir.c_str());
+#else
+		int ret = mkdir(dir.c_str(), 0755);
+#endif
 	}
 
 	if(i == 0) dir = dirs[i];
-	else dir.append("\\" + dirs[i]);
+	else dir.append(getDirDelimeter() + dirs[i]);
 
-	int ret = _mkdir(dir.c_str());
+#ifdef WINDOWS
+		int ret = _mkdir(dir.c_str());
+#else
+		int ret = mkdir(dir.c_str(), 0755);
+#endif
 
 	if(ret) return false;
 	else return true;
@@ -159,14 +226,22 @@ bool makeDir( const std::string& path )
 
 std::string getCurrentDateTime()
 {
+#ifdef WINDOWS
 	_timeb tb;
 	_ftime_s(&tb);
 
 	struct tm t;
 	localtime_s(&t, &tb.time);
+#else
+	timeb tb;
+	ftime(&tb);
 
+	struct tm t;
+	localtime_r(&tb.time, &t);
+
+#endif
 	char datetime[100] = { '\0' };
-	sprintf_s(datetime, 100, "%04d%02d%02dT%02d%02d%02d.%03d", 
+	snprintf(datetime, 100, "%04d%02d%02dT%02d%02d%02d.%03d",
 			t.tm_year + 1900,
 			t.tm_mon + 1,
 			t.tm_mday,
@@ -182,8 +257,11 @@ std::string getCurrentDateTime()
 
 bool existDir( const string& path )
 {
+#ifdef WINDOWS
 	if(_chdir(path.c_str())) return false;
-
+#else
+	if(chdir(path.c_str())) return false;
+#endif
 	return true;
 }
 

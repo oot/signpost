@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __ISEARCHFILTER_H__
+#define __ISEARCHFILTER_H__
 
 #include "oot.h"
 
@@ -19,3 +20,5 @@ public:
 
 
 };
+
+#endif // __ISEARCHFILTER_H__

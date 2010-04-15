@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __TODO_H__
+#define __TODO_H__
 
 #include "Item.h"
 
@@ -44,3 +45,5 @@ private:
 	std::vector<int> dependency_;
 	int parentIdx_;
 };
+
+#endif // __TODO_H__

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __TAGS_H__
+#define __TAGS_H__
 
 #include "oot.h"
 #include <vector>
@@ -23,3 +24,6 @@ private:
 	std::vector<std::string> tags_;
 	//boost::mutex mutex_;
 };
+
+
+#endif // __TAGS_H__

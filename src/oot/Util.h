@@ -1,10 +1,15 @@
-#pragma once
+#ifndef __OOT_UTIL_H__
+#define __OOT_UTIL_H__
 
 #include "oot.h"
 #include <string>
 #include <vector>
 
 namespace oot {	namespace util {
+
+	std::string getDirDelimeter();
+
+	bool getCurrentWorkingDir(std::string& dir);
 
 	std::wstring mbsToWcs(const std::string& str);
 	std::string wcsToMbs(const std::wstring& str);
@@ -21,10 +26,12 @@ namespace oot {	namespace util {
 	std::vector<std::string> split( const std::string& str, const std::string& delimiter );
 	std::vector<std::wstring> split( const std::wstring& str, const std::wstring& delimiter );
 
-	std::string getProgramPath(bool isDirOnly = true);
+	bool getProgramPath(std::string& path, bool isDirOnly = true);
 	bool makeDir(const std::string& path);
 	bool existDir(const string& path);
 
 	std::string getCurrentDateTime();
 
 }}
+
+#endif /* __OOT_UTIL_H__ */
