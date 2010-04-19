@@ -298,6 +298,8 @@ bool TextReader::initialize()
 
 void TextReader::setPath( const std::string& path )
 {
+    if(util::existDir(path) == false) util::makeDir(path);
+
 	path_ = path;
 	path_.append(util::getDirDelimeter());
 	path_.append("Text.db");

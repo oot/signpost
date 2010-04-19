@@ -12,8 +12,6 @@
 #define rcast	reinterpret_cast	
 #define dcast	dynamic_cast
 
-#define MAX_PATH 255
-
 namespace oot {};
 
 using namespace oot;

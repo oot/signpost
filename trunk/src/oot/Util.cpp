@@ -3,7 +3,7 @@
 
 #include <cstdio>    // FILENAME_MAX
 
-#ifdef WINDOWS
+#ifdef WIN32
 #include <windows.h> // windows GetModuleFileName
 #include <direct.h>  // windows _mkdir
 #else
@@ -17,7 +17,7 @@ namespace oot {	namespace util {
 
 std::string getDirDelimeter()
 {
-#ifdef WINDOWS
+#ifdef WIN32
 	return "\\";
 #else
 	return "/";
@@ -29,7 +29,7 @@ bool getCurrentWorkingDir(std::string& dir)
 	char currPath[FILENAME_MAX] = { '\0' };
 	bool isOk = false;
 
-#ifdef WINDOWS
+#ifdef WIN32
 	isOk = _getcwd(currPath, sizeof(currPath)) ? true : false;
 #else
 	isOk = getcwd(currPath, sizeof(currPath)) ? true : false;
@@ -44,8 +44,8 @@ bool getProgramPath(std::string& path, bool isDirOnly /*= true*/)
 	int bytes = 0;
 	char chars[FILENAME_MAX] = { '\0' };
 
-#ifdef WINDOWS
-	bytes = GetModuleFileName(NULL, chars, FILENAME_MAX);
+#ifdef WIN32
+	bytes = GetModuleFileNameA(NULL, chars, FILENAME_MAX);
 #else
 	char tempChars[32] = { '\0' };
 	snprintf(tempChars, 32 - 1, "/proc/%d/exe", getpid());
@@ -204,7 +204,7 @@ bool makeDir( const std::string& path )
 	{
 		if(i == 0) dir = dirs[i];
 		else dir.append(getDirDelimeter() + dirs[i]);
-#ifdef WINDOWS
+#ifdef WIN32
 		int ret = _mkdir(dir.c_str());
 #else
 		int ret = mkdir(dir.c_str(), 0755);
@@ -214,7 +214,7 @@ bool makeDir( const std::string& path )
 	if(i == 0) dir = dirs[i];
 	else dir.append(getDirDelimeter() + dirs[i]);
 
-#ifdef WINDOWS
+#ifdef WIN32
 		int ret = _mkdir(dir.c_str());
 #else
 		int ret = mkdir(dir.c_str(), 0755);
@@ -226,7 +226,7 @@ bool makeDir( const std::string& path )
 
 std::string getCurrentDateTime()
 {
-#ifdef WINDOWS
+#ifdef WIN32
 	_timeb tb;
 	_ftime_s(&tb);
 
@@ -241,7 +241,7 @@ std::string getCurrentDateTime()
 
 #endif
 	char datetime[100] = { '\0' };
-	snprintf(datetime, 100, "%04d%02d%02dT%02d%02d%02d.%03d",
+	sprintf(datetime, "%04d%02d%02dT%02d%02d%02d.%03d",
 			t.tm_year + 1900,
 			t.tm_mon + 1,
 			t.tm_mday,
@@ -257,7 +257,7 @@ std::string getCurrentDateTime()
 
 bool existDir( const string& path )
 {
-#ifdef WINDOWS
+#ifdef WIN32
 	if(_chdir(path.c_str())) return false;
 #else
 	if(chdir(path.c_str())) return false;

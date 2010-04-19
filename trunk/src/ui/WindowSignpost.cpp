@@ -24,7 +24,7 @@ WindowSignpost::WindowSignpost(void)
 	vbox_.pack_start(toolbar_, Gtk::PACK_SHRINK);
 	vbox_.add(hpaned_);
 	vbox_.pack_start(statusbar_, Gtk::PACK_SHRINK);
-	vbox_.set_size_request(-1, 800);
+	vbox_.set_size_request(-1, 500);
 
 	hpaned_.pack1(vpanedCategory_, options);
 	hpaned_.pack2(hpanedItem_);
