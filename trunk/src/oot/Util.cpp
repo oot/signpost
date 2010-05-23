@@ -176,24 +176,12 @@ std::vector<std::wstring> split( const std::wstring& str, const std::wstring& de
 	return tokens;
 }
 
-std::string getProgramPath( bool isDirOnly /*= true*/ )
-{
-	char szBuffer[MAX_PATH];
-	std::string strRet;
-//	::GetModuleFileNameA(NULL, szBuffer, MAX_PATH);
-	strRet = "./";
-	strRet = szBuffer;
-
-	if(!isDirOnly)
-		return strRet;
-
-	int nIndex = strRet.find_last_of(getDirDelimeter());
-	return strRet.substr(0, nIndex);
-}
-
 bool makeDir( const std::string& path )
 {
 	std::vector<std::string> dirs = split(path, getDirDelimeter());
+	size_t idx = path.find_first_of(getDirDelimeter());
+	bool isRootBegin = false;
+	if(idx == 0) isRootBegin = true;
 
 	if(dirs.empty()) return false;
 
@@ -202,8 +190,14 @@ bool makeDir( const std::string& path )
 	unsigned i;
 	for(i = 0; i < (dirs.size() - 1); i++)
 	{
-		if(i == 0) dir = dirs[i];
-		else dir.append(getDirDelimeter() + dirs[i]);
+		if(i == 0)
+		{
+			if(isRootBegin) dir = getDirDelimeter();
+			dir.append(dirs[i]);
+		}
+		else
+			dir.append(getDirDelimeter() + dirs[i]);
+
 #ifdef WIN32
 		int ret = _mkdir(dir.c_str());
 #else
@@ -258,11 +252,12 @@ std::string getCurrentDateTime()
 bool existDir( const string& path )
 {
 #ifdef WIN32
-	if(_chdir(path.c_str())) return false;
+	int ret = _chdir(path.c_str());
 #else
-	if(chdir(path.c_str())) return false;
+	int ret = chdir(path.c_str());
 #endif
-	return true;
+	if(ret) return false;
+	else return true;
 }
 
 }} /* namespace oot::util */

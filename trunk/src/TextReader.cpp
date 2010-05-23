@@ -15,9 +15,13 @@ bool TextReader::open( const std::string& databasePath )
 {
 	if(isOpened()) return true;
 
+	std::string dbPath(databasePath);
+	dbPath.append(util::getDirDelimeter());
+	dbPath.append("Text.db");
+
 	try
 	{
-		db_.open(databasePath.c_str());
+		db_.open(dbPath.c_str());
 		isOpened_ = true;
 	}
 	catch (...)
@@ -80,7 +84,8 @@ bool TextReader::add( Text& text )
 	absPath.append(util::getDirDelimeter());
 	absPath.append(relPath);
 
-	if(util::existDir(absPath) == false) util::makeDir(absPath);
+	if(util::existDir(absPath) == false)
+		util::makeDir(absPath);
 
 	string filename(util::getCurrentDateTime());
 	filename.append(" - ");
@@ -116,7 +121,7 @@ bool TextReader::add( Text& text )
 		ret = false;
 	}
 
-	ofstream out(absPath.c_str());
+	ofstream out(absPath.c_str(), ios::out);
 
 	if(out)
 	{
@@ -301,8 +306,6 @@ void TextReader::setPath( const std::string& path )
     if(util::existDir(path) == false) util::makeDir(path);
 
 	path_ = path;
-	path_.append(util::getDirDelimeter());
-	path_.append("Text.db");
 }
 
 std::vector<std::string> TextReader::getCategories()
