@@ -10,6 +10,7 @@
 #include "TextReader.h"
 
 #include "WindowAddText.h"
+#include "WindowAddSubCategory.h"
 
 class WindowSignpost : public Gtk::Window
 {
