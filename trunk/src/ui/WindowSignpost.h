@@ -6,6 +6,7 @@
 #include "WindowSubCategory.h"
 #include "WindowList.h"
 #include "WindowPreview.h"
+#include "WindowAddSubCategory.h"
 
 #include "TextReader.h"
 
