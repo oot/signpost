@@ -6,6 +6,7 @@ LViewSubCategory::LViewSubCategory(void)
 {
 	//set_column_title(0, "Select");
 	//set_column_title(1, "Category");
+
 }
 
 LViewSubCategory::~LViewSubCategory(void)

@@ -1,5 +1,6 @@
 #include "oot.h"
 #include "WindowSubCategory.h"
+#include <gdkmm.h>
 
 WindowSubCategory::WindowSubCategory(void)
 : lvText_(0)
@@ -49,7 +50,7 @@ void WindowSubCategory::onRowChanged( const Gtk::TreeModel::Path& path, const Gt
 
 		item.category = row[cols_.name];
 		item.isSelected = row[cols_.isSelected];
-		int itemType = row[cols_.icon];
+		int itemType = row[cols_.type];
 
 		item.type = scast<Item::Type>(itemType);
 
@@ -84,8 +85,9 @@ void WindowSubCategory::setData( std::map<Item::Type, std::vector<std::string> >
 		{
 			Gtk::TreeModel::Row row = *(lStore_->append());
 			row[cols_.isSelected] = false;
-			row[cols_.icon] = itemType;
+			row[cols_.type] = itemType;
 			row[cols_.name] = (*itCate);
+			row[cols_.icon] = Gtk::Image("./signpost-category-txt.png").get_pixbuf();
 		}
 
 		//std::for_each(categories.begin(), categories.end(), )
@@ -112,3 +114,5 @@ void WindowSubCategory::onButtonDelete()
 
 //	ustring str = lvText_.get_text(idx, 1);
 }
+
+
