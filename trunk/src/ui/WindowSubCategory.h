@@ -64,5 +64,4 @@ private:
 
 	void onButtonNew();
 	void onButtonDelete();
-
 };
