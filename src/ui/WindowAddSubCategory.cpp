@@ -4,7 +4,7 @@
  *  Created on: 2010. 5. 21.
  *      Author: oot
  */
-
+#include "oot.h"
 #include "WindowAddSubCategory.h"
 
 #include "TextReader.h"
