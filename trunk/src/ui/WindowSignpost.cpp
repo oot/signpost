@@ -87,6 +87,8 @@ void WindowSignpost::initializeItem()
 	path.append(getDirDelimeter());
 	path.append("Text");
 
+	util::makeDir(path);
+
 	textReader_.setPath(path);
 	textReader_.initialize();
 }
