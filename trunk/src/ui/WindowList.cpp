@@ -10,10 +10,17 @@ WindowList::WindowList(void)
 	lvText_.set_model(lstore_);
 	lvText_.append_column("item", cols_.itemType);
 	lvText_.append_column("title", cols_.title);
+	lvText_.append_column("id", cols_.id);
 
 	lstore_->signal_row_changed().connect(
 		sigc::mem_fun(*this, &WindowList::onRowChanged)
 		);
+
+	lvText_.signal_row_activated().connect(
+		sigc::mem_fun(*this, &WindowList::onRowActivated)
+		);
+
+	
 
 	//////////////////////////////////////////////////////////////////////////
 
@@ -40,6 +47,7 @@ void WindowList::setItemData( std::vector<Text> txts )
 		Gtk::TreeModel::Row row = *(lstore_->append());
 		row[cols_.itemType] = scast<int>(txt.getType());
 		row[cols_.title] = txt.getTitle();
+		row[cols_.id] = txt.getIdx();
 	}
 }
 
@@ -50,4 +58,22 @@ void WindowList::onRowChanged( const Gtk::TreeModel::Path& path, const Gtk::Tree
 	{
 		;
 	}
+}
+
+void WindowList::onRowActivated( const Gtk::TreeModel::Path& path, const Gtk::TreeViewColumn* column )
+{
+	ustring pathText = path.to_string();
+	Gtk::TreeModel::iterator it = lstore_->get_iter(path);
+
+	Gtk::TreeModel::Row row = (*it);
+
+	unsigned id = row[cols_.id];
+
+	sinalRowActivated_(id);
+	
+}
+
+ConnectionType WindowList::registerHander( SignalUIntType::slot_function_type func )
+{
+	return sinalRowActivated_.connect(func);
 }

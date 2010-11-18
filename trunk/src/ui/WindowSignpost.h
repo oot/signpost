@@ -25,6 +25,7 @@ private:
 	void initializeItem();
 	void onCategoryChange(int itemType);
 	void onSubCategoryChange(vector<CategorySelect>& select);
+	void onListActivated(unsigned id);
 	void changeSubCategory();
 	void changeItemList();
 
