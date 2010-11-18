@@ -9,10 +9,12 @@ public:
 	ItemListColumns() {
 		add(title);
 		add(itemType);
+		add(id);
 	};
 
 	Gtk::TreeModelColumn<std::string> title;
 	Gtk::TreeModelColumn<int> itemType;
+	Gtk::TreeModelColumn<unsigned> id;
 
 };
 

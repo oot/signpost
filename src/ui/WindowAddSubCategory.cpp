@@ -5,6 +5,8 @@
  *      Author: oot
  */
 #include "oot.h"
+#include "oot.h"
+
 #include "WindowAddSubCategory.h"
 
 #include "TextReader.h"

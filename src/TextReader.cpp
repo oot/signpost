@@ -384,3 +384,36 @@ std::vector<Text> TextReader::get( std::vector<std::string> categories )
 
 	return txts;
 }
+
+Text TextReader::get( const int idx )
+{
+	std::stringstream query;
+	query << "SELECT idx, category, title, content, path, create_date, modify_date FROM Text WHERE idx = " << idx << ";";
+	query.flush();
+
+	CppSQLite3Query q;
+	Text txt;
+
+	try
+	{
+		q = db_.execQuery(query.str().c_str());
+	}
+	catch (std::exception ex)
+	{
+		return txt;
+	}
+
+	
+
+	for(; !q.eof(); q.nextRow())
+	{
+		txt.setIdx(q.getIntField("idx"));
+		txt.setCategory(q.getStringField("category"));
+		txt.setTitle(q.getStringField("title"));
+		txt.setContents(q.getStringField("content"));
+		// create_date
+		// modify_date
+	}
+
+	return txt;
+}
