@@ -385,7 +385,7 @@ std::vector<Text> TextReader::get( std::vector<std::string> categories )
 	return txts;
 }
 
-Text TextReader::get( const int idx )
+Text TextReader::get( const unsigned idx )
 {
 	std::stringstream query;
 	query << "SELECT idx, category, title, content, path, create_date, modify_date FROM Text WHERE idx = " << idx << ";";
@@ -416,4 +416,33 @@ Text TextReader::get( const int idx )
 	}
 
 	return txt;
+}
+
+bool TextReader::update( const unsigned idx, const ustring& content )
+{
+	std::stringstream query;
+	query	<< "UPDATE Text "
+		<< "SET "
+		<< "content = '"	<< content		<< "' "
+		<< "WHERE idx = "  << idx			<< ";";
+	query.flush();
+
+	bool ret = true;
+
+	try
+	{
+		db_.execQuery(query.str().c_str());
+	}
+	catch(CppSQLite3Exception& ex)
+	{
+		clog << ex.errorMessage() << endl;
+		ret = false;
+	}
+	catch (std::exception& ex)
+	{
+		clog << ex.what() << endl;
+		ret = false;
+	}
+
+	return ret;
 }

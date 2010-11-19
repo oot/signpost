@@ -65,6 +65,7 @@ WindowSignpost::WindowSignpost(void)
 	swinCategory_.changeHandler(boost::bind(&WindowSignpost::onCategoryChange, this, _1));
 	swinSubCategory_.changeHandler(boost::bind(&WindowSignpost::onSubCategoryChange, this, _1));
 	swinItemList_.registerHander(boost::bind(&WindowSignpost::onListActivated, this, _1));
+	swinItemView_.registerHandlerItemSave(boost::bind(&WindowSignpost::onViewSave, this, _1, _2, _3));
 
 	tbuttonAddText_.signal_clicked().connect(sigc::mem_fun(*this, &WindowSignpost::onButtonAddText));
 
@@ -145,4 +146,13 @@ void WindowSignpost::onListActivated( unsigned id )
 	Text text = textReader_.get(id);
 
 	swinItemView_.setViewItem(&text);
+}
+
+void WindowSignpost::onViewSave( int type, unsigned idx, ustring& contents )
+{
+	if(type == Item::Text)
+	{
+		textReader_.update(idx, contents);
+	}
+	
 }

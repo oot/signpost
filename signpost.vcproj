@@ -42,7 +42,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="src/;&quot;$(BOOST)&quot;;&quot;$(SQLITE3)\sqlite3&quot;"
+				AdditionalIncludeDirectories="src/;&quot;$(BOOST)&quot;;&quot;$(SQLITE3)\sqlite3&quot;;&quot;$(XXXIX)\include&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -64,9 +64,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="sqlite3.lib"
+				AdditionalDependencies="sqlite3.lib libgtkhtml.lib"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="$(BOOST)/lib;$(SQLITE3)/lib"
+				AdditionalLibraryDirectories="&quot;$(BOOST)/lib&quot;;&quot;$(SQLITE3)/lib&quot;;&quot;$(XXXIX)/lib&quot;"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				EntryPointSymbol="mainCRTStartup"
@@ -92,7 +92,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="copy $(SQLITE3)\lib\*.dll $(OutDir)\"
+				CommandLine="copy $(SQLITE3)\lib\*.dll $(OutDir)\&#x0D;&#x0A;copy $(XXXIX)\lib\libgtkhtml.dll $(OutDir)\"
 			/>
 		</Configuration>
 		<Configuration
