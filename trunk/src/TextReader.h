@@ -22,8 +22,9 @@ public:
 
 	bool add(Text& text);
 	bool update(Text& text);
+	bool update(const unsigned idx, const ustring& content);
 	bool del(Text& text);
-	Text get(const int idx);
+	Text get(const unsigned idx);
 	std::vector<Text> get(std::vector<std::string> categories);
 
 	std::vector<Text> getTotal();
